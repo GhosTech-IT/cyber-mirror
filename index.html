@@ -6,12 +6,41 @@
   <title>GhosTech — Protect your data.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap">
   <style>
-    html, body {height:100%; width:100%; margin:0; padding:0; box-sizing:border-box; background:#0b1017; overflow-x:hidden;}
-    body {min-height:100vh; font-family:'Fira Mono','Consolas',monospace; color:#cfffe4; letter-spacing:.015em; position:relative;}
-    .cyber-bg, .matrix-rain {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; overflow:hidden;}
-    .glitch-screen {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:10000; pointer-events:none; background:rgba(8,16,23,0.95);}
-    .glitch-rgb {position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:10001;}
-    .glitch-lines {position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:10002;}
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: #0b1017;
+      overflow-x: hidden;
+      overscroll-behavior: auto;
+      touch-action: auto;
+    }
+    body {
+      min-height: 100vh;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      color: #cfffe4;
+      letter-spacing: .015em;
+      position: relative;
+      overscroll-behavior: auto;
+      touch-action: auto;
+    }
+    .cyber-bg,
+    .matrix-rain,
+    .glitch-screen,
+    .glitch-rgb,
+    .glitch-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none !important;
+      overflow: hidden;
+      touch-action: none;
+    }
     .container {max-width:760px; margin:64px auto 44px auto; background:rgba(12,22,36,0.93); border-radius:19px; box-shadow:0 0 40px #11ffc799,0 0 0 2px #27aaff88; padding:2.8em 2.3em 2em 2.3em; position:relative; z-index:3;}
     h1 {font-size:2.1em; color:#5ffdff; font-weight:700; letter-spacing:0.1em; margin-top:0; margin-bottom:.24em; text-shadow:0 0 22px #00ffe3bb,0 0 4px #12faad;}
     .slogan {color:#ffefb3; font-size:1.18em; letter-spacing:0.09em; margin-bottom:1.6em; margin-left:2px; text-shadow:0 0 9px #21ffd255; font-weight:600;}
@@ -47,7 +76,7 @@
     <h1>GhosTech</h1>
     <div class="slogan">Protect your data.</div>
     <div class="about">
-      Cybersecurity university student. Exploring and sharing the best in digital defense gadgets.<br>
+      Cybersecurity student. Exploring and sharing the best in digital defense.<br>
       Advocacy for privacy and online safety.<br>
       <span style="color:#82ffd2;">Learn, develop, and protect your cyber world.</span>
     </div>
@@ -71,6 +100,104 @@
         GhosTech-IT
       </a>
     </div>
+
+    <!-- DIY CYBERSECURITY GADGETS & PROJECTS SECTION -->
+    <div class="section">
+      <div class="section-title">DIY Cybersecurity Gadgets & Projects</div>
+      <!-- FEATURED BUILD -->
+      <div style="background:#17242e; border:2px solid #30ffb6; box-shadow:0 0 22px #23ffb688; border-radius:13px; padding:1.3em 1em 1.2em 1em; margin-bottom:1.2em; display:flex; align-items:center; gap:1.3em; flex-wrap:wrap;">
+        <img src="https://raw.githubusercontent.com/GhosTech-IT/pwnagotchi-fallout-boy-theme/main/screenshot.png" 
+             alt="Pwnagotchi Fallout Boy Theme" 
+             style="width:84px;height:84px;object-fit:cover;border-radius:11px;box-shadow:0 0 23px #00ffccbb;filter:brightness(1.05) drop-shadow(0 0 13px #21ffd2cc);flex-shrink:0;">
+        <div>
+          <div style="font-size:1.22em;color:#31ffd8;font-weight:700;text-shadow:0 0 12px #27ffc5;">⭐ Featured Build: Pwnagotchi Fallout Boy Theme</div>
+          <div style="margin-top:.33em;font-size:1.06em;color:#d8ffee;">Turn a Raspberry Pi Zero W into an AI WiFi handshake collector—now with a post-apocalyptic Fallout Boy twist.</div>
+          <a href="https://github.com/GhosTech-IT/pwnagotchi-fallout-boy-theme" target="_blank" style="display:inline-block;margin-top:0.6em;color:#25fbc5;font-weight:700;text-shadow:0 0 4px #19ffc2;">View on GitHub</a>
+        </div>
+      </div>
+      <ul class="links" style="display:grid;gap:1.5em 0;">
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://pwnagotchi.ai/static/logo-2f4379f517a86154a0bbf790da492eab.png" alt="Pwnagotchi" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #17ffc9;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://pwnagotchi.ai/" target="_blank">Pwnagotchi</a> — AI-powered WiFi handshake collector (Raspberry Pi Zero W)
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://tails.boum.org/branding/website/logo.png" alt="Tails OS" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #11ffd4;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://tails.net/" target="_blank">Tails OS Bootable USB</a> — Portable, amnesic OS for privacy & anonymity
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://github.com/flipperdevices/flipperzero-firmware/raw/dev/documentation/img/flipper-z-firmware/flipper-zero.png" alt="Flipper Zero" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #21ffd4;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://github.com/flipperdevices/flipperzero-firmware" target="_blank">Flipper Zero Mods</a> — Custom apps, radio attacks, and more for Flipper Zero
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://media.hak5.org/products/usb-rubber-ducky/ducky-square.png" alt="USB Rubber Ducky" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #14ffe2;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://www.hak5.org/products/usb-rubber-ducky" target="_blank">USB Rubber Ducky</a> — Hotplug keystroke injection attacks
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://avatars.githubusercontent.com/u/25566101?s=200&v=4" alt="WiFi Deauther" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #0affde;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://github.com/spacehuhn/esp8266_deauther" target="_blank">WiFi Deauther</a> — ESP8266-based wireless deauthentication/DoS tool
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://pi-hole.net/wp-content/uploads/2016/12/fb-share-graphic.png" alt="Pi-hole" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #16ffc9;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://github.com/pi-hole/pi-hole" target="_blank">Pi-hole</a> — Network-wide ad and tracker blocker (Raspberry Pi)
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://cdn-learn.adafruit.com/assets/assets/000/090/007/original/adafruit_products_IMG_20181119_153922.jpg" alt="LAN Tap" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #20ffe5;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://learn.adafruit.com/adafruit-ethernet-tap" target="_blank">LAN Tap (Adafruit)</a> — Passive ethernet sniffer for network monitoring
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://avatars.githubusercontent.com/u/23153434?s=200&v=4" alt="P4wnP1" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #25ffd1;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://github.com/mame82/P4wnP1_aloa" target="_blank">P4wnP1 A.L.O.A.</a> — All-in-one USB attack platform (Raspberry Pi Zero W)
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/676/2676-06.png" alt="Raspberry Pi 3 as a Hacker Tool" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #23ffce;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://learn.adafruit.com/raspberry-pi-3-as-a-hacker-tool" target="_blank">Raspberry Pi 3 as a Hacker Tool</a> — Turn a Pi into a mobile pentest platform
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://media.kitploit.com/images/2018/07/WiFiCoconut-thumb.png" alt="WiFi Coconut" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #27ffd6;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://www.kitploit.com/2018/07/wifi-coconut-8x-monitor-mode-radios-for.html" target="_blank">WiFi Coconut</a> — 8x monitor mode USB radios for wireless packet capture
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://cdn.instructables.com/F5D/L2I4/JS4YB0R2/F5DL2I4JS4YB0R2.LARGE.jpg" alt="Portable Pentest Box" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #20ffe2;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://www.instructables.com/How-to-Make-a-Portable-Pentest-Box/" target="_blank">Portable Pentest Box</a> — Build your own USB-powered hacking lab
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://avatars.githubusercontent.com/u/1032923?s=200&v=4" alt="GhostPack" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #23ffe2;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://github.com/GhostPack" target="_blank">GhostPack</a> — Red team C# toolkits (offline opsec utilities)
+          </span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:.9em;">
+          <img src="https://hackaday.com/wp-content/uploads/2018/06/router1.jpg" alt="Old Router Pentest Box" style="width:42px;height:42px;border-radius:8px;box-shadow:0 0 13px #13ffcd;object-fit:cover;flex-shrink:0;">
+          <span>
+            <a href="https://hackaday.com/2018/06/26/turning-an-old-router-into-a-penetration-testing-tool/" target="_blank">Old Router Pentest Box</a> — Repurpose routers as offensive tools
+          </span>
+        </li>
+      </ul>
+    </div>
+    <!-- END GADGETS SECTION -->
+
     <div class="section">
       <div class="section-title">Web-Based Cybersecurity Resources & Tools</div>
       <ul class="links">
@@ -112,12 +239,12 @@
       </ul>
     </div>
     <div class="donate">
-      <b>Support my journey :)</b><br>
+      <b>Fuel the next wave of digital defense. Support, share, and stay sharp.</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
   </div>
   <div class="footer">
-    GhosTech — online safety & gadget exploration.
+    GhosTech — ethical hacking & gadget exploration.
   </div>
   <script>
     // CYBER LINES BACKGROUND

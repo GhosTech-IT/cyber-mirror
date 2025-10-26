@@ -1,207 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBER MIRROR – AI Self-Check</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
-    <style>
-        body {
-            background: radial-gradient(circle at 20% 20%, #090e18 0%, #111624 100%);
-            color: #e3e9ff;
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 470px;
-            margin: 40px auto 24px auto;
-            background: rgba(19,25,44,0.97);
-            border-radius: 1.8em;
-            box-shadow: 0 0 24px #272e54cc;
-            padding: 2.2em 2em 2.8em 2em;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 0;
-            letter-spacing: 0.03em;
-            font-weight: 700;
-            font-size: 2.1em;
-            color: #91eaff;
-        }
-        .subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 1.6em;
-            color: #d2deff;
-        }
-        label {
-            font-size: 1em;
-            margin-top: 1em;
-            display: block;
-            color: #b7caff;
-            margin-bottom: .4em;
-        }
-        input[type="checkbox"] {
-            margin-right: 8px;
-            accent-color: #00d9e8;
-        }
-        .question {
-            margin-bottom: 1.2em;
-        }
-        button {
-            background: #00d9e8;
-            color: #182133;
-            border: none;
-            border-radius: 1.2em;
-            font-size: 1.14em;
-            font-weight: 700;
-            padding: 0.7em 2.3em;
-            margin-top: 1.3em;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background: #0cf6ff;
-        }
-        .result, .advice, .donate {
-            margin-top: 2em;
-            text-align: center;
-        }
-        .advice {
-            color: #eeffb1;
-            font-size: 1.14em;
-            margin-bottom: 2.5em;
-            margin-top: 1.1em;
-        }
-        .donate {
-            background: #212843;
-            border-radius: 1em;
-            padding: 1.2em 0.8em 1.5em 0.8em;
-            box-shadow: 0 0 8px #00d9e87a;
-            color: #fffd;
-        }
-        .donate .cashapp {
-            background: #02d36e;
-            color: #161e29;
-            padding: 0.6em 1.8em;
-            border-radius: 1.5em;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            font-size: 1.15em;
-            text-decoration: none;
-            margin-top: 1.1em;
-            display: inline-block;
-            box-shadow: 0 2px 6px #0002;
-        }
-        .donate .coffee {
-            margin-top: 1em;
-            font-size: .97em;
-            color: #97ffa1;
-        }
-        .heroicon {
-            font-size: 2.6em;
-            display: block;
-            margin-bottom: 0.4em;
-        }
-        .small {
-            font-size: 0.97em;
-            color: #91eaffbb;
-        }
-        .recent {
-            margin-top: 1.8em;
-            color: #71fbe4;
-            font-size: 0.95em;
-            text-align: center;
-        }
-        .recent .nudge {
-            font-size: 1.03em;
-            color: #feffab;
-            font-style: italic;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GhosTech — Protect your data.</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap">
+  <style>
+    html, body {
+      height: 100%; width: 100%; margin: 0; padding: 0; box-sizing: border-box;
+      background: #0b1017;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      color: #cfffe4;
+      letter-spacing: .015em;
+      position: relative;
+    }
+    /* CYBER ANIMATED BACKGROUND */
+    .cyber-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      filter: blur(0.2px) brightness(1.09) contrast(1.03);
+      background: #0b1017;
+    }
+    /* BLURRING/NEON for glassy cyber feel */
+    .container {
+      max-width: 720px;
+      margin: 64px auto 44px auto;
+      background: rgba(12,22,36,0.93);
+      border-radius: 19px;
+      box-shadow: 0 0 40px #11ffc799, 0 0 0 2px #27aaff88;
+      padding: 2.8em 2.3em 2em 2.3em;
+      position: relative;
+      z-index: 3;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.1em;
+      color: #5ffdff;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-top: 0;
+      margin-bottom: .24em;
+      text-shadow: 0 0 22px #00ffe3bb, 0 0 4px #12faad;
+    }
+    .slogan {
+      color: #ffefb3;
+      font-size: 1.18em;
+      letter-spacing: 0.09em;
+      margin-bottom: 1.6em;
+      margin-left: 2px;
+      text-shadow: 0 0 9px #21ffd255;
+      font-weight: 600;
+    }
+    .about {
+      margin: 1.15em 0 1.6em 0;
+      color: #a0ffe7;
+      font-size: 1.16em;
+      line-height: 1.6em;
+      text-shadow: 0 0 6px #0af1a022;
+    }
+    .socials {
+      margin: 1.7em 0 1.7em 0;
+      display: flex;
+      gap: 2em;
+      align-items: center;
+      font-size: 1.12em;
+    }
+    .social-link {
+      color: #29ffee;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid #1effe8;
+      transition: color 0.17s, border-bottom 0.17s;
+      filter: drop-shadow(0 0 6px #18ffe844);
+    }
+    .social-link:hover {
+      color: #eafffc;
+      border-bottom: 1px solid #35f0fe;
+    }
+    .icon {
+      font-size: 1.18em;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 7px #24fff577);
+    }
+    .section {
+      margin: 2.1em 0 2.1em 0;
+    }
+    .section-title {
+      color: #6fffe6;
+      font-size: 1.08em;
+      font-weight: 700;
+      margin-bottom: .65em;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px #11ffd055;
+    }
+    ul.links {
+      padding-left: 1.2em;
+      font-size: 1.08em;
+      margin-bottom: .8em;
+      color: #c4ffef;
+    }
+    ul.links li { margin-bottom: .35em; }
+    a {
+      color: #47fafc;
+      text-decoration: none;
+      border-bottom: 1px dotted #2fffc3;
+      transition: color 0.14s;
+    }
+    a:hover {
+      color: #faffea;
+      border-bottom: 1px solid #49ffd8;
+    }
+    .donate {
+      background: #151d25;
+      border-radius: 1.2em;
+      padding: 1.2em 0.9em 1.1em 0.9em;
+      color: #edfff5;
+      margin-top: 2.5em;
+      box-shadow: 0 0 11px #28fba677;
+      text-align: center;
+      font-size: 1.08em;
+      text-shadow: 0 0 6px #12f6f366;
+    }
+    .cashapp {
+      display: inline-block;
+      margin-top: 0.8em;
+      background: #02d36e;
+      color: #162d22;
+      padding: 0.52em 1.7em;
+      border-radius: 1.2em;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.09em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #1bff8e44;
+      transition: background 0.18s;
+    }
+    .cashapp:hover { background: #00b86b; }
+    .footer {
+      margin-top: 3.2em;
+      text-align: center;
+      color: #80ffd8bb;
+      font-size: 0.99em;
+      opacity: 0.7;
+      letter-spacing: .04em;
+      z-index: 10;
+    }
+
+    /* Custom hacker cursor */
+    body, a, button {
+      cursor: url('data:image/svg+xml;utf8,<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="12" fill="none" stroke="%2320ffd3" stroke-width="2"/><circle cx="18" cy="18" r="3" fill="%2320ffd3"/><rect x="17.5" y="0" width="1" height="36" fill="%233cffed"/><rect x="0" y="17.5" width="36" height="1" fill="%233cffed"/></svg>') 18 18, crosshair;
+    }
+    /* On links/buttons, even more glow */
+    a:hover, button:hover {
+      filter: drop-shadow(0 0 4px #24ffe888);
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1.1em 0.38em 2em 0.38em;}
+      h1 { font-size: 1.19em;}
+      .socials { gap: 1em; font-size: 1em; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>CYBER MIRROR</h1>
-    <div class="subtitle">
-        AI-Powered Self-Check &mdash; <span style="color:#fff18a;">Shield Yourself. Support the Shield.</span>
+  <!-- CYBER ANIMATED BACKGROUND SVG CANVAS -->
+  <canvas class="cyber-bg" id="cyberbg"></canvas>
+  <div class="container">
+    <h1>GhosTech</h1>
+    <div class="slogan">
+      Protect your data.
     </div>
-    <form id="cyberForm">
-        <div class="question">
-            <label>1. Do you use the same password for more than one website?</label>
-            <input type="checkbox" name="reuse" id="reuse"> Yes
-        </div>
-        <div class="question">
-            <label>2. Have you received emails or texts from unknown senders with links/attachments?</label>
-            <input type="checkbox" name="phish" id="phish"> Yes
-        </div>
-        <div class="question">
-            <label>3. Is your device missing automatic updates or security patches?</label>
-            <input type="checkbox" name="patch" id="patch"> Yes
-        </div>
-        <div class="question">
-            <label>4. Have you ever connected to free public WiFi for sensitive activities (banking, shopping, etc)?</label>
-            <input type="checkbox" name="wifi" id="wifi"> Yes
-        </div>
-        <div class="question">
-            <label>5. Are your social media accounts public or easy to search?</label>
-            <input type="checkbox" name="social" id="social"> Yes
-        </div>
-        <button type="submit">Run AI Self-Check</button>
-    </form>
-    <div class="result" id="result"></div>
-    <div class="advice" id="advice"></div>
-    <div class="donate" id="donate" style="display:none;">
-        <span class="heroicon">🛡️</span>
-        <b>This shield is kept alive by you.</b>
-        <div class="coffee">If this helped you, consider fueling the mission.<br>
-        <b>Send a tip on CashApp:</b></div>
-        <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
-        <div class="small" style="margin-top:1em;">Every donation keeps Cyber Mirror free and running for all.<br>
-            <span style="color:#5cffa4;">You’re not just helping me—you’re protecting the world.</span>
-        </div>
+    <div class="about">
+      Solving cybercrime problems. Exploring and sharing the best in digital defense gadgets.<br>
+      Advocacy for privacy and online safety.<br>
+      <span style="color:#82ffd2;">Discover, upgrade, and protect your world. DMs open.</span>
     </div>
-    <div class="recent">
-        <div class="nudge">"This site helped me avoid a scam! Coffee sent!" &mdash; Sarah, California</div>
-        <div class="nudge">"I checked my security in 1 minute, thanks for the free help!" &mdash; Mike, Texas</div>
-        <div class="nudge">"Happy to support someone fighting the bad guys!" &mdash; Anonymous</div>
+    <div class="socials">
+      <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank">
+        <span class="icon" title="Instagram">
+          <svg height="1em" viewBox="0 0 448 512"><path fill="#2fffb3" d="M224 202.66A53.34 53.34 0 1 0 277.34 256 53.38 53.38 0 0 0 224 202.66Zm124.71-41a54 54 0 0 0-30.23-30.24C295.15 117.7 281.55 112 256 112s-39.15 5.7-62.47 19.42a54 54 0 0 0-30.23 30.24C117.7 152.85 112 166.45 112 192c0 25.55 5.7 39.15 19.42 62.47a54 54 0 0 0 30.24 30.23C152.85 334.3 166.45 340 192 340c25.55 0 39.15-5.7 62.47-19.42a54 54 0 0 0 30.23-30.23C334.3 295.15 340 281.55 340 256s-5.7-39.15-19.42-62.47Z"></path></svg>
+        </span>
+        @GhosTech_IT
+      </a>
+      <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank">
+        <span class="icon" title="YouTube">
+          <svg height="1em" viewBox="0 0 576 512"><path fill="#2fffb3" d="M549.655 124.083c-6.281-23.725-24.916-42.36-48.641-48.641C458.029 64 288 64 288 64s-170.029 0-213.014 11.442c-23.724 6.281-42.36 24.916-48.641 48.641C16.902 167.07 16.902 256 16.902 256s0 88.93 10.443 131.917c6.281 23.725 24.917 42.36 48.641 48.641C117.971 448 288 448 288 448s170.029 0 213.014-11.442c23.725-6.281 42.36-24.916 48.641-48.641C559.098 344.93 559.098 256 559.098 256s0-88.93-9.443-131.917zM232 336V176l142.745 80L232 336z"/></svg>
+        </span>
+        @GhosTech_IT
+      </a>
     </div>
-</div>
-<script>
-    // AI-generated logic (offline/embedded)
-    document.getElementById('cyberForm').onsubmit = function(e){
-        e.preventDefault();
-        let risk = 0;
-        let reasons = [];
-        if(document.getElementById('reuse').checked) { risk++; reasons.push('Reused passwords are easily stolen in breaches.'); }
-        if(document.getElementById('phish').checked) { risk++; reasons.push('Phishing messages can steal accounts or infect devices.'); }
-        if(document.getElementById('patch').checked) { risk++; reasons.push('Unpatched devices are open to known attacks.'); }
-        if(document.getElementById('wifi').checked) { risk++; reasons.push('Public WiFi is easy to intercept, especially for banking.'); }
-        if(document.getElementById('social').checked) { risk++; reasons.push('Public profiles make targeted scams easier.'); }
+    <div class="section">
+      <div class="section-title">Gadgets & Security Resources</div>
+      <ul class="links">
+        <li><a href="https://flipperzero.one/" target="_blank">Flipper Zero</a> — Pocket multi-tool for hacking & pentesting</li>
+        <li><a href="https://haveibeenpwned.com/" target="_blank">HaveIBeenPwned</a> — Check for breached accounts</li>
+        <li><a href="https://shodan.io/" target="_blank">Shodan</a> — Device search & exposure mapping</li>
+        <li><a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> — Multi-engine file scanning</li>
+        <li><a href="https://www.privacyguides.org/" target="_blank">Privacy Guides</a> — Tools & habits for privacy</li>
+        <li><a href="https://lockdownprivacy.com/" target="_blank">Lockdown Privacy</a> — Tracker blocker</li>
+        <li><a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a> — Open-source wordlists</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Reading & Discovery</div>
+      <ul class="links">
+        <li><a href="https://www.hackerone.com/blog/hacker101" target="_blank">Hacker101 — Free web security training</a></li>
+        <li><a href="https://www.blackhillsinfosec.com/blog/" target="_blank">Black Hills InfoSec Blog</a></li>
+        <li><a href="https://www.reddit.com/r/netsec/" target="_blank">Reddit: /r/netsec</a></li>
+        <li><a href="https://www.rfc-editor.org/rfc/rfc2196" target="_blank">RFC 2196: Site Security Handbook</a></li>
+      </ul>
+    </div>
+    <div class="donate">
+      <b>Like my work? Support future content & research:</b><br>
+      <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; 2023-2024 GhosTech.<br>
+    Cybercrime solutions & gadget exploration.
+  </div>
+  <script>
+    // Animated cyber lines for live feel
+    const canvas = document.getElementById('cyberbg');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w; canvas.height = h;
 
-        let resultTxt = '';
-        let adviceTxt = '';
+    function resizeBg(){
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w; canvas.height = h;
+    }
+    window.addEventListener('resize', resizeBg);
 
-        if(risk <= 1){
-            resultTxt = "✅ <b>Low Cyber Risk</b>";
-            adviceTxt = "You are doing well! Keep using strong, unique passwords and stay aware. Stay one step ahead!";
-        } else if(risk == 2){
-            resultTxt = "🟡 <b>Moderate Cyber Risk</b>";
-            adviceTxt = "Good job, but there’s room to tighten up. " + reasons.join(' ');
-        } else if(risk == 3){
-            resultTxt = "🟠 <b>High Cyber Risk</b>";
-            adviceTxt = "Several risk factors detected: " + reasons.join(' ') + " Update habits and stay alert!";
-        } else {
-            resultTxt = "🔴 <b>Extreme Cyber Risk</b>";
-            adviceTxt = "You are a prime target for hackers or scammers! " + reasons.join(' ') + " Secure your accounts, use unique passwords, and stay vigilant. If you want more tips, reach out any time.";
+    // Each line: {x, y, dx, dy, hue, len}
+    let lines = [];
+    for(let i=0;i<13;i++){
+      let angle = Math.random()*Math.PI*2;
+      lines.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        dx: Math.cos(angle)*1.3,
+        dy: Math.sin(angle)*1.3,
+        hue: 165+Math.random()*120,
+        len: 50+Math.random()*150,
+        t: Math.random()*Math.PI*2
+      });
+    }
+    function drawLines(){
+      ctx.clearRect(0,0,w,h);
+      for(const ln of lines){
+        let glow = ctx.createLinearGradient(ln.x,ln.y,ln.x+ln.dx*ln.len,ln.y+ln.dy*ln.len);
+        glow.addColorStop(0,`hsla(${ln.hue},100%,60%,0.19)`);
+        glow.addColorStop(.7,`hsla(${ln.hue+25},100%,77%,0.13)`);
+        glow.addColorStop(1,`hsla(${ln.hue+70},98%,90%,0.07)`);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(ln.x, ln.y);
+        ctx.lineTo(ln.x+ln.dx*ln.len, ln.y+ln.dy*ln.len);
+        ctx.strokeStyle = glow;
+        ctx.shadowColor = `hsla(${ln.hue+22},99%,66%,.88)`;
+        ctx.shadowBlur = 14;
+        ctx.lineWidth = 1.3 + Math.abs(Math.sin(ln.t))*1.5;
+        ctx.globalAlpha = .82 + .15*Math.sin(ln.t);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        ctx.restore();
+        // Move line
+        ln.x += ln.dx*Math.sin(ln.t)*0.7;
+        ln.y += ln.dy*Math.cos(ln.t)*0.7;
+        ln.t += 0.013 + Math.random()*0.009;
+        // Wrap around screen
+        if(ln.x<0||ln.x>w||ln.y<0||ln.y>h){
+          ln.x = Math.random()*w;
+          ln.y = Math.random()*h;
+          ln.hue = 160+Math.random()*120;
+          ln.len = 40+Math.random()*170;
         }
-
-        document.getElementById('result').innerHTML = resultTxt;
-        document.getElementById('advice').innerHTML = adviceTxt;
-        document.getElementById('donate').style.display = "block";
-        return false;
-    };
-</script>
+      }
+      requestAnimationFrame(drawLines);
+    }
+    drawLines();
+  </script>
 </body>
 </html>

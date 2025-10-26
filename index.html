@@ -40,7 +40,6 @@
 <body>
   <canvas class="cyber-bg" id="cyberbg"></canvas>
   <canvas class="matrix-rain" id="matrixrain"></canvas>
-  <!-- GLITCH EFFECT -->
   <div class="glitch-screen" id="glitchScreen"></div>
   <canvas class="glitch-rgb" id="glitchRGB"></canvas>
   <canvas class="glitch-lines" id="glitchLines"></canvas>
@@ -48,28 +47,25 @@
     <h1>GhosTech</h1>
     <div class="slogan">Protect your data.</div>
     <div class="about">
-      Raising online safety awareness. Exploring and sharing the best in digital defense tools.<br>
+      Cybersecurity university student. Exploring and sharing the best in digital defense gadgets.<br>
       Advocacy for privacy and online safety.<br>
-      <span style="color:#82ffd2;">Discover, upgrade, and protect your world. DMs open.</span>
+      <span style="color:#82ffd2;">Learn, develop, and protect your cyber world.</span>
     </div>
     <div class="socials">
       <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank" title="Instagram">
         <span class="icon">
-          <!-- Green glowing Instagram SVG -->
           <svg viewBox="0 0 448 512" fill="none"><ellipse cx="224" cy="256" rx="120" ry="120" stroke="#4bffb2" stroke-width="28" /><rect x="56" y="56" width="336" height="400" rx="90" stroke="#24ffc6" stroke-width="18" fill="none"/><circle cx="224" cy="256" r="64" fill="#21ffbc"/><circle cx="344" cy="168" r="19" fill="#24ffc6"/></svg>
         </span>
         @GhosTech_IT
       </a>
       <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank" title="YouTube">
         <span class="icon">
-          <!-- Neon glowing YouTube SVG -->
           <svg viewBox="0 0 576 512"><rect x="32" y="96" width="512" height="320" rx="77" fill="#11ffd5" opacity="0.19"/><polygon points="240,368 240,144 416,256" fill="#36ffd8"/><rect x="32" y="96" width="512" height="320" rx="77" stroke="#36ffd8" stroke-width="16" fill="none"/></svg>
         </span>
         @GhosTech_IT
       </a>
       <a class="social-link" href="https://github.com/GhosTech-IT" target="_blank" title="GitHub">
         <span class="icon github-icon">
-          <!-- Neon glowing GitHub SVG -->
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#21ffd477" /><path fill="#21ffd2" d="M12 3C7 3 3 7 3 12c0 4 2.6 7.4 6.1 8.6.5.1.7-.2.7-.5v-1.7c-2.5.5-3-1-3-1-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2 1 2.5.7.1-.6.3-1 .5-1.2-2-.2-4-1-4-4.3 0-.9.3-1.5.8-2.1-.1-.2-.4-1.1.1-2.2 0 0 .7-.2 2.2.8A7.6 7.6 0 0 1 12 8c.7 0 1.4.1 2 .2 1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3.3-2 4-4 4.3.3.3.5.7.5 1.4v2c0 .3.2.6.7.5A9 9 0 0 0 21 12c0-5-4-9-9-9z"/></svg>
         </span>
         GhosTech-IT
@@ -116,14 +112,13 @@
       </ul>
     </div>
     <div class="donate">
-      <b>Help support me :)</b><br>
+      <b>Support my journey :)</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
   </div>
   <div class="footer">
-    GhosTech — cybercrime awareness & gadget exploration.
+    GhosTech — online safety & gadget exploration.
   </div>
-  <!-- Live cyber lines background -->
   <script>
     // CYBER LINES BACKGROUND
     const canvas = document.getElementById('cyberbg');
@@ -197,7 +192,7 @@
     }
     renderTrail();
 
-    // MATRIX DATA RAIN
+    // BINARY MATRIX RAIN WITH "ghostech" ENCODED, 25% SLOWER
     const mcanvas = document.getElementById('matrixrain');
     const mctx = mcanvas.getContext('2d');
     function resizeMatrix(){
@@ -205,28 +200,38 @@
     }
     resizeMatrix();
     window.addEventListener('resize', resizeMatrix);
-    // Characters for Matrix rain
-    const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#*%&'.split('');
-    let fontSize = 18, columns, drops;
+
+    const message = "ghostech";
+    const binaryMsg = message.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0'));
+    let fontSize = 18, columns, drops, colIndex = [];
     function setupMatrix(){
       mcanvas.width = window.innerWidth; mcanvas.height = window.innerHeight;
       columns = Math.floor(mcanvas.width / fontSize);
       drops = Array(columns).fill(1);
+      colIndex = Array(columns).fill(0).map(()=>Math.floor(Math.random()*binaryMsg.length*8));
     }
     setupMatrix();
     window.addEventListener('resize', setupMatrix);
     function drawMatrix(){
-      mctx.fillStyle = "rgba(11,16,28,0.17)";
+      mctx.fillStyle = "rgba(11,16,28,0.16)";
       mctx.fillRect(0, 0, mcanvas.width, mcanvas.height);
       mctx.font = fontSize + "px Fira Mono, monospace";
       mctx.shadowColor="#21ffd3cc";
       mctx.shadowBlur=10;
       for(let i=0; i<columns; i++){
-        let char = matrixChars[Math.floor(Math.random()*matrixChars.length)];
+        let bitIdx = colIndex[i] % (binaryMsg.length * 8);
+        let letterNum = Math.floor(bitIdx / 8);
+        let bitNum = bitIdx % 8;
+        let bit = binaryMsg[letterNum][bitNum];
         mctx.fillStyle = "#26ffd2";
-        mctx.fillText(char, i*fontSize, drops[i]*fontSize);
-        if(drops[i]*fontSize > mcanvas.height && Math.random() > 0.94) drops[i]=0;
-        drops[i]++;
+        mctx.fillText(bit, i*fontSize, drops[i]*fontSize);
+        // 25% slower
+        if (Math.random() > 0.76) drops[i]++;
+        if(drops[i]*fontSize > mcanvas.height && Math.random() > 0.92) {
+          drops[i]=0;
+          colIndex[i]++;
+        }
+        colIndex[i]++;
       }
       mctx.shadowBlur=0;
       requestAnimationFrame(drawMatrix);

@@ -82,16 +82,20 @@
       transition: color 0.17s, border-bottom 0.17s;
       filter: drop-shadow(0 0 6px #18ffe844);
     }
-    .social-link:hover {
-      color: #eafffc;
-      border-bottom: 1px solid #35f0fe;
+    .social-link:hover .icon {
+      filter: drop-shadow(0 0 15px #33ffb3) brightness(1.7);
+      transform: scale(1.1);
     }
     .icon {
-      width: 1.25em;
-      height: 1.25em;
+      width: 1.32em;
+      height: 1.32em;
       display: inline-block;
       vertical-align: middle;
-      filter: drop-shadow(0 0 7px #24fff577);
+      filter: drop-shadow(0 0 7px #1affbecc) brightness(1.3);
+      transition: filter 0.2s, transform 0.17s;
+    }
+    .github-icon {
+      filter: drop-shadow(0 0 9px #44ffcc99) brightness(1.28);
     }
     .section {
       margin: 2.1em 0 2.1em 0;
@@ -167,6 +171,20 @@
       h1 { font-size: 1.19em;}
       .socials { gap: 1em; font-size: 1em; }
     }
+    /* Cursor trail */
+    .trail-dot {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #25ffc7cc 0%, #3dffe388 67%, transparent 100%);
+      z-index: 10000;
+      opacity: 0.8;
+      filter: blur(0.5px);
+      mix-blend-mode: lighten;
+      transition: opacity 0.35s;
+    }
   </style>
 </head>
 <body>
@@ -177,22 +195,41 @@
       Protect your data.
     </div>
     <div class="about">
-      Student in IT and Cybersecurity. Exploring and sharing the best in digital defensive gadgets.<br>
+      Solving cybercrime problems. Exploring and sharing the best in digital defense gadgets.<br>
       Advocacy for privacy and online safety.<br>
-      <span style="color:#82ffd2;">Discover, upgrade, and protect your cyber world.</span>
+      <span style="color:#82ffd2;">Discover, upgrade, and protect your world. DMs open.</span>
     </div>
     <div class="socials">
       <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank" title="Instagram">
         <span class="icon">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width:1.22em;vertical-align:middle;border-radius:0.25em;box-shadow:0 0 2px #11ffe8;"/>
+          <!-- Green glowing Instagram SVG -->
+          <svg viewBox="0 0 448 512" width="1em" height="1em" style="filter: drop-shadow(0 0 7px #1affbecc);"><defs><radialGradient id="igglow" cx="50%" cy="50%" r="65%"><stop offset="0%" stop-color="#34ffb3" stop-opacity="1"/><stop offset="100%" stop-color="#0e4b3b" stop-opacity="0.18"/></radialGradient></defs>
+          <rect x="24" y="56" width="400" height="400" rx="100" fill="url(#igglow)" />
+          <circle cx="224" cy="256" r="80" stroke="#34ffb3" stroke-width="35" fill="none"/>
+          <circle cx="344" cy="168" r="18" fill="#34ffb3"/>
+        </svg>
         </span>
         @GhosTech_IT
       </a>
       <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank" title="YouTube">
         <span class="icon">
-          <svg height="1em" viewBox="0 0 576 512"><path fill="#2fffb3" d="M549.655 124.083c-6.281-23.725-24.916-42.36-48.641-48.641C458.029 64 288 64 288 64s-170.029 0-213.014 11.442c-23.724 6.281-42.36 24.916-48.641 48.641C16.902 167.07 16.902 256 16.902 256s0 88.93 10.443 131.917c6.281 23.725 24.917 42.36 48.641 48.641C117.971 448 288 448 288 448s170.029 0 213.014-11.442c23.725-6.281 42.36-24.916 48.641-48.641C559.098 344.93 559.098 256 559.098 256s0-88.93-9.443-131.917zM232 336V176l142.745 80L232 336z"/></svg>
+          <!-- Neon glowing YouTube SVG -->
+          <svg height="1em" viewBox="0 0 576 512"><defs><radialGradient id="ytglow" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="#24ffd3" /><stop offset="100%" stop-color="#06585c" stop-opacity="0.15"/></radialGradient></defs>
+          <rect x="16.9" y="64" width="543.1" height="384" rx="70" fill="url(#ytglow)" />
+          <polygon points="232,336 232,176 374.7,256" fill="#23ffbe"/>
+        </svg>
         </span>
         @GhosTech_IT
+      </a>
+      <a class="social-link" href="https://github.com/GhosTech-IT" target="_blank" title="GitHub">
+        <span class="icon github-icon">
+          <!-- Neon glowing GitHub SVG -->
+          <svg viewBox="0 0 24 24" width="1em" height="1em"><defs><radialGradient id="ghglow" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#43ffd1"/><stop offset="100%" stop-color="#1c2c26" stop-opacity="0.15"/></radialGradient></defs>
+            <circle cx="12" cy="12" r="12" fill="url(#ghglow)"/>
+            <path fill="#2df9b7" d="M12 3C7 3 3 7 3 12c0 4 2.6 7.4 6.1 8.6.5.1.7-.2.7-.5v-1.7c-2.5.5-3-1-3-1-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2 1 2.5.7.1-.6.3-1 .5-1.2-2-.2-4-1-4-4.3 0-.9.3-1.5.8-2.1-.1-.2-.4-1.1.1-2.2 0 0 .7-.2 2.2.8A7.6 7.6 0 0 1 12 8c.7 0 1.4.1 2 .2 1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3.3-2 4-4 4.3.3.3.5.7.5 1.4v2c0 .3.2.6.7.5A9 9 0 0 0 21 12c0-5-4-9-9-9z"/>
+          </svg>
+        </span>
+        GhosTech-IT
       </a>
     </div>
     <div class="section">
@@ -212,14 +249,14 @@
     <div class="section">
       <div class="section-title">Reading & Discovery</div>
       <ul class="links">
-        <li><a href="https://tryhackme.com" target="_blank">TryHackMe — Hacker training</a></li>
+        <li><a href="https://www.hackerone.com/blog/hacker101" target="_blank">Hacker101 — Free web security training</a></li>
         <li><a href="https://www.blackhillsinfosec.com/blog/" target="_blank">Black Hills InfoSec Blog</a></li>
         <li><a href="https://www.reddit.com/r/netsec/" target="_blank">Reddit: /r/netsec</a></li>
         <li><a href="https://www.rfc-editor.org/rfc/rfc2196" target="_blank">RFC 2196: Site Security Handbook</a></li>
       </ul>
     </div>
     <div class="donate">
-      <b>Support future projects by donating below.</b><br>
+      <b>Fuel the next wave of digital defense. Support, share, and stay sharp.</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
   </div>
@@ -258,35 +295,4 @@
       for(const ln of lines){
         let glow = ctx.createLinearGradient(ln.x,ln.y,ln.x+ln.dx*ln.len,ln.y+ln.dy*ln.len);
         glow.addColorStop(0,`hsla(${ln.hue},100%,60%,0.19)`);
-        glow.addColorStop(.7,`hsla(${ln.hue+25},100%,77%,0.13)`);
-        glow.addColorStop(1,`hsla(${ln.hue+70},98%,90%,0.07)`);
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(ln.x, ln.y);
-        ctx.lineTo(ln.x+ln.dx*ln.len, ln.y+ln.dy*ln.len);
-        ctx.strokeStyle = glow;
-        ctx.shadowColor = `hsla(${ln.hue+22},99%,66%,.88)`;
-        ctx.shadowBlur = 14;
-        ctx.lineWidth = 1.3 + Math.abs(Math.sin(ln.t))*1.5;
-        ctx.globalAlpha = .82 + .15*Math.sin(ln.t);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-        ctx.restore();
-        // Move line
-        ln.x += ln.dx*Math.sin(ln.t)*0.7;
-        ln.y += ln.dy*Math.cos(ln.t)*0.7;
-        ln.t += 0.013 + Math.random()*0.009;
-        // Wrap around screen
-        if(ln.x<0||ln.x>w||ln.y<0||ln.y>h){
-          ln.x = Math.random()*w;
-          ln.y = Math.random()*h;
-          ln.hue = 160+Math.random()*120;
-          ln.len = 40+Math.random()*170;
-        }
-      }
-      requestAnimationFrame(drawLines);
-    }
-    drawLines();
-  </script>
-</body>
-</html>
+        glow.addColorStop(.7,`hsla(${ln.hue

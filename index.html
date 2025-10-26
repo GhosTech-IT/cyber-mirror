@@ -8,7 +8,10 @@
   <style>
     html, body {height:100%; width:100%; margin:0; padding:0; box-sizing:border-box; background:#0b1017; overflow-x:hidden;}
     body {min-height:100vh; font-family:'Fira Mono','Consolas',monospace; color:#cfffe4; letter-spacing:.015em; position:relative;}
-    .cyber-bg {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; overflow:hidden;}
+    .cyber-bg, .matrix-rain {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; overflow:hidden;}
+    .glitch-screen {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:10000; pointer-events:none; background:rgba(8,16,23,0.95);}
+    .glitch-rgb {position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:10001;}
+    .glitch-lines {position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:10002;}
     .container {max-width:760px; margin:64px auto 44px auto; background:rgba(12,22,36,0.93); border-radius:19px; box-shadow:0 0 40px #11ffc799,0 0 0 2px #27aaff88; padding:2.8em 2.3em 2em 2.3em; position:relative; z-index:3;}
     h1 {font-size:2.1em; color:#5ffdff; font-weight:700; letter-spacing:0.1em; margin-top:0; margin-bottom:.24em; text-shadow:0 0 22px #00ffe3bb,0 0 4px #12faad;}
     .slogan {color:#ffefb3; font-size:1.18em; letter-spacing:0.09em; margin-bottom:1.6em; margin-left:2px; text-shadow:0 0 9px #21ffd255; font-weight:600;}
@@ -36,11 +39,16 @@
 </head>
 <body>
   <canvas class="cyber-bg" id="cyberbg"></canvas>
-  <div class="container">
+  <canvas class="matrix-rain" id="matrixrain"></canvas>
+  <!-- GLITCH EFFECT -->
+  <div class="glitch-screen" id="glitchScreen"></div>
+  <canvas class="glitch-rgb" id="glitchRGB"></canvas>
+  <canvas class="glitch-lines" id="glitchLines"></canvas>
+  <div class="container" id="mainContent" style="opacity:0;transition:opacity 0.9s cubic-bezier(.68,-0.55,.27,1.55);">
     <h1>GhosTech</h1>
     <div class="slogan">Protect your data.</div>
     <div class="about">
-      Solving cybercrime problems. Exploring and sharing the best in digital defense gadgets.<br>
+      Raising online safety awareness. Exploring and sharing the best in digital defense tools.<br>
       Advocacy for privacy and online safety.<br>
       <span style="color:#82ffd2;">Discover, upgrade, and protect your world. DMs open.</span>
     </div>
@@ -108,24 +116,21 @@
       </ul>
     </div>
     <div class="donate">
-      <b>Donate to support me :)</b><br>
+      <b>Help support me :)</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
   </div>
   <div class="footer">
-    GhosTech — cybercrime solutions & gadget exploration.
+    GhosTech — cybercrime awareness & gadget exploration.
   </div>
   <!-- Live cyber lines background -->
   <script>
+    // CYBER LINES BACKGROUND
     const canvas = document.getElementById('cyberbg');
     const ctx = canvas.getContext('2d');
     let w = window.innerWidth, h = window.innerHeight;
-    function resizeBg() {
-      w = window.innerWidth; h = window.innerHeight;
-      canvas.width = w; canvas.height = h;
-    }
-    resizeBg();
-    window.addEventListener('resize', resizeBg);
+    function resizeBg() { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }
+    resizeBg(); window.addEventListener('resize', resizeBg);
     let lines = [];
     for(let i=0;i<17;i++){
       let angle = Math.random()*Math.PI*2;
@@ -163,11 +168,12 @@
       requestAnimationFrame(drawLines);
     }
     drawLines();
-    // Cursor trail: works on mouse and touch
+
+    // CURSOR TRAIL (MOUSE & TOUCH)
     let trail = [];
     function addTrail(x, y) {
       trail.push({x, y, life: 1});
-      if (trail.length > 12) trail.shift();
+      if (trail.length > 14) trail.shift();
     }
     document.addEventListener('mousemove', e => addTrail(e.clientX, e.clientY));
     document.addEventListener('touchmove', e => {
@@ -181,8 +187,8 @@
         dot.className='trail-dot';
         dot.style.left = (trail[i].x-7) + 'px';
         dot.style.top = (trail[i].y-7) + 'px';
-        dot.style.opacity = 0.1 + trail[i].life*0.6 + (i/trail.length)*0.3;
-        dot.style.width = dot.style.height = (14 + i*1.5) + 'px';
+        dot.style.opacity = 0.11 + trail[i].life*0.6 + (i/trail.length)*0.26;
+        dot.style.width = dot.style.height = (14 + i*1.6) + 'px';
         document.body.appendChild(dot);
       }
       for(let t of trail) t.life *= 0.87;
@@ -190,6 +196,93 @@
       requestAnimationFrame(renderTrail);
     }
     renderTrail();
+
+    // MATRIX DATA RAIN
+    const mcanvas = document.getElementById('matrixrain');
+    const mctx = mcanvas.getContext('2d');
+    function resizeMatrix(){
+      mcanvas.width = window.innerWidth; mcanvas.height = window.innerHeight;
+    }
+    resizeMatrix();
+    window.addEventListener('resize', resizeMatrix);
+    // Characters for Matrix rain
+    const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#*%&'.split('');
+    let fontSize = 18, columns, drops;
+    function setupMatrix(){
+      mcanvas.width = window.innerWidth; mcanvas.height = window.innerHeight;
+      columns = Math.floor(mcanvas.width / fontSize);
+      drops = Array(columns).fill(1);
+    }
+    setupMatrix();
+    window.addEventListener('resize', setupMatrix);
+    function drawMatrix(){
+      mctx.fillStyle = "rgba(11,16,28,0.17)";
+      mctx.fillRect(0, 0, mcanvas.width, mcanvas.height);
+      mctx.font = fontSize + "px Fira Mono, monospace";
+      mctx.shadowColor="#21ffd3cc";
+      mctx.shadowBlur=10;
+      for(let i=0; i<columns; i++){
+        let char = matrixChars[Math.floor(Math.random()*matrixChars.length)];
+        mctx.fillStyle = "#26ffd2";
+        mctx.fillText(char, i*fontSize, drops[i]*fontSize);
+        if(drops[i]*fontSize > mcanvas.height && Math.random() > 0.94) drops[i]=0;
+        drops[i]++;
+      }
+      mctx.shadowBlur=0;
+      requestAnimationFrame(drawMatrix);
+    }
+    drawMatrix();
+
+    // GLITCH ON LOAD
+    function glitchOnLoad() {
+      const glitchScreen = document.getElementById('glitchScreen');
+      const glitchRGB = document.getElementById('glitchRGB');
+      const glitchLines = document.getElementById('glitchLines');
+      let steps = 0, maxSteps = 17;
+      function step(){
+        // RGB split effect
+        glitchRGB.width = window.innerWidth; glitchRGB.height = window.innerHeight;
+        let ctxRGB = glitchRGB.getContext('2d');
+        ctxRGB.clearRect(0,0,glitchRGB.width,glitchRGB.height);
+        for(let i=0;i<5;i++){
+          let y = Math.random()*window.innerHeight;
+          ctxRGB.fillStyle = `rgba(35,255,220,0.17)`;
+          ctxRGB.fillRect(0,y,window.innerWidth,4+Math.random()*6);
+          ctxRGB.globalCompositeOperation = "lighter";
+        }
+        // Random scanlines
+        glitchLines.width = window.innerWidth; glitchLines.height = window.innerHeight;
+        let ctxLines = glitchLines.getContext('2d');
+        ctxLines.clearRect(0,0,glitchLines.width,glitchLines.height);
+        for(let i=0;i<22;i++){
+          let y = Math.random()*window.innerHeight;
+          ctxLines.strokeStyle = `rgba(30,255,222,0.04)`;
+          ctxLines.beginPath();
+          ctxLines.moveTo(0,y); ctxLines.lineTo(window.innerWidth, y);
+          ctxLines.stroke();
+        }
+        // RGB noise
+        if(steps===0){
+          glitchScreen.style.background='linear-gradient(90deg,#19ffd9 0 6%,#13aeaa 100%)';
+        } else {
+          glitchScreen.style.background='rgba(8,16,23,0.97)';
+        }
+        steps++;
+        if(steps < maxSteps){
+          setTimeout(step, 27+Math.random()*44);
+        } else {
+          glitchScreen.style.opacity=0;
+          glitchRGB.style.opacity=0;
+          glitchLines.style.opacity=0;
+          document.getElementById('mainContent').style.opacity=1;
+          setTimeout(()=>{
+            glitchScreen.remove();glitchRGB.remove();glitchLines.remove();
+          },900);
+        }
+      }
+      step();
+    }
+    window.onload = glitchOnLoad;
   </script>
 </body>
 </html>

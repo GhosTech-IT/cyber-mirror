@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER MIRROR – AI Self-Check</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <style>
+        body {
+            background: radial-gradient(circle at 20% 20%, #090e18 0%, #111624 100%);
+            color: #e3e9ff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 470px;
+            margin: 40px auto 24px auto;
+            background: rgba(19,25,44,0.97);
+            border-radius: 1.8em;
+            box-shadow: 0 0 24px #272e54cc;
+            padding: 2.2em 2em 2.8em 2em;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+            font-size: 2.1em;
+            color: #91eaff;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 1.6em;
+            color: #d2deff;
+        }
+        label {
+            font-size: 1em;
+            margin-top: 1em;
+            display: block;
+            color: #b7caff;
+            margin-bottom: .4em;
+        }
+        input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: #00d9e8;
+        }
+        .question {
+            margin-bottom: 1.2em;
+        }
+        button {
+            background: #00d9e8;
+            color: #182133;
+            border: none;
+            border-radius: 1.2em;
+            font-size: 1.14em;
+            font-weight: 700;
+            padding: 0.7em 2.3em;
+            margin-top: 1.3em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #0cf6ff;
+        }
+        .result, .advice, .donate {
+            margin-top: 2em;
+            text-align: center;
+        }
+        .advice {
+            color: #eeffb1;
+            font-size: 1.14em;
+            margin-bottom: 2.5em;
+            margin-top: 1.1em;
+        }
+        .donate {
+            background: #212843;
+            border-radius: 1em;
+            padding: 1.2em 0.8em 1.5em 0.8em;
+            box-shadow: 0 0 8px #00d9e87a;
+            color: #fffd;
+        }
+        .donate .cashapp {
+            background: #02d36e;
+            color: #161e29;
+            padding: 0.6em 1.8em;
+            border-radius: 1.5em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            font-size: 1.15em;
+            text-decoration: none;
+            margin-top: 1.1em;
+            display: inline-block;
+            box-shadow: 0 2px 6px #0002;
+        }
+        .donate .coffee {
+            margin-top: 1em;
+            font-size: .97em;
+            color: #97ffa1;
+        }
+        .heroicon {
+            font-size: 2.6em;
+            display: block;
+            margin-bottom: 0.4em;
+        }
+        .small {
+            font-size: 0.97em;
+            color: #91eaffbb;
+        }
+        .recent {
+            margin-top: 1.8em;
+            color: #71fbe4;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .recent .nudge {
+            font-size: 1.03em;
+            color: #feffab;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>CYBER MIRROR</h1>
+    <div class="subtitle">
+        AI-Powered Self-Check &mdash; <span style="color:#fff18a;">Shield Yourself. Support the Shield.</span>
+    </div>
+    <form id="cyberForm">
+        <div class="question">
+            <label>1. Do you use the same password for more than one website?</label>
+            <input type="checkbox" name="reuse" id="reuse"> Yes
+        </div>
+        <div class="question">
+            <label>2. Have you received emails or texts from unknown senders with links/attachments?</label>
+            <input type="checkbox" name="phish" id="phish"> Yes
+        </div>
+        <div class="question">
+            <label>3. Is your device missing automatic updates or security patches?</label>
+            <input type="checkbox" name="patch" id="patch"> Yes
+        </div>
+        <div class="question">
+            <label>4. Have you ever connected to free public WiFi for sensitive activities (banking, shopping, etc)?</label>
+            <input type="checkbox" name="wifi" id="wifi"> Yes
+        </div>
+        <div class="question">
+            <label>5. Are your social media accounts public or easy to search?</label>
+            <input type="checkbox" name="social" id="social"> Yes
+        </div>
+        <button type="submit">Run AI Self-Check</button>
+    </form>
+    <div class="result" id="result"></div>
+    <div class="advice" id="advice"></div>
+    <div class="donate" id="donate" style="display:none;">
+        <span class="heroicon">🛡️</span>
+        <b>This shield is kept alive by you.</b>
+        <div class="coffee">If this helped you, consider fueling the mission.<br>
+        <b>Send a tip on CashApp:</b></div>
+        <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
+        <div class="small" style="margin-top:1em;">Every donation keeps Cyber Mirror free and running for all.<br>
+            <span style="color:#5cffa4;">You’re not just helping me—you’re protecting the world.</span>
+        </div>
+    </div>
+    <div class="recent">
+        <div class="nudge">"This site helped me avoid a scam! Coffee sent!" &mdash; Sarah, California</div>
+        <div class="nudge">"I checked my security in 1 minute, thanks for the free help!" &mdash; Mike, Texas</div>
+        <div class="nudge">"Happy to support someone fighting the bad guys!" &mdash; Anonymous</div>
+    </div>
+</div>
+<script>
+    // AI-generated logic (offline/embedded)
+    document.getElementById('cyberForm').onsubmit = function(e){
+        e.preventDefault();
+        let risk = 0;
+        let reasons = [];
+        if(document.getElementById('reuse').checked) { risk++; reasons.push('Reused passwords are easily stolen in breaches.'); }
+        if(document.getElementById('phish').checked) { risk++; reasons.push('Phishing messages can steal accounts or infect devices.'); }
+        if(document.getElementById('patch').checked) { risk++; reasons.push('Unpatched devices are open to known attacks.'); }
+        if(document.getElementById('wifi').checked) { risk++; reasons.push('Public WiFi is easy to intercept, especially for banking.'); }
+        if(document.getElementById('social').checked) { risk++; reasons.push('Public profiles make targeted scams easier.'); }
+
+        let resultTxt = '';
+        let adviceTxt = '';
+
+        if(risk <= 1){
+            resultTxt = "✅ <b>Low Cyber Risk</b>";
+            adviceTxt = "You are doing well! Keep using strong, unique passwords and stay aware. Stay one step ahead!";
+        } else if(risk == 2){
+            resultTxt = "🟡 <b>Moderate Cyber Risk</b>";
+            adviceTxt = "Good job, but there’s room to tighten up. " + reasons.join(' ');
+        } else if(risk == 3){
+            resultTxt = "🟠 <b>High Cyber Risk</b>";
+            adviceTxt = "Several risk factors detected: " + reasons.join(' ') + " Update habits and stay alert!";
+        } else {
+            resultTxt = "🔴 <b>Extreme Cyber Risk</b>";
+            adviceTxt = "You are a prime target for hackers or scammers! " + reasons.join(' ') + " Secure your accounts, use unique passwords, and stay vigilant. If you want more tips, reach out any time.";
+        }
+
+        document.getElementById('result').innerHTML = resultTxt;
+        document.getElementById('advice').innerHTML = adviceTxt;
+        document.getElementById('donate').style.display = "block";
+        return false;
+    };
+</script>
+</body>
+</html>

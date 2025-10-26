@@ -6,194 +6,39 @@
   <title>GhosTech — Protect your data.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap">
   <style>
-    html, body {
-      height: 100%; width: 100%; margin: 0; padding: 0; box-sizing: border-box;
-      background: #0b1017;
-      overflow-x: hidden;
-    }
-    body {
-      min-height: 100vh;
-      font-family: 'Fira Mono', 'Consolas', monospace;
-      color: #cfffe4;
-      letter-spacing: .015em;
-      position: relative;
-    }
-    .cyber-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      filter: blur(0.2px) brightness(1.09) contrast(1.03);
-      background: #0b1017;
-    }
-    .container {
-      max-width: 720px;
-      margin: 64px auto 44px auto;
-      background: rgba(12,22,36,0.93);
-      border-radius: 19px;
-      box-shadow: 0 0 40px #11ffc799, 0 0 0 2px #27aaff88;
-      padding: 2.8em 2.3em 2em 2.3em;
-      position: relative;
-      z-index: 3;
-      overflow: hidden;
-    }
-    h1 {
-      font-size: 2.1em;
-      color: #5ffdff;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-top: 0;
-      margin-bottom: .24em;
-      text-shadow: 0 0 22px #00ffe3bb, 0 0 4px #12faad;
-    }
-    .slogan {
-      color: #ffefb3;
-      font-size: 1.18em;
-      letter-spacing: 0.09em;
-      margin-bottom: 1.6em;
-      margin-left: 2px;
-      text-shadow: 0 0 9px #21ffd255;
-      font-weight: 600;
-    }
-    .about {
-      margin: 1.15em 0 1.6em 0;
-      color: #a0ffe7;
-      font-size: 1.16em;
-      line-height: 1.6em;
-      text-shadow: 0 0 6px #0af1a022;
-    }
-    .socials {
-      margin: 1.7em 0 1.7em 0;
-      display: flex;
-      gap: 2em;
-      align-items: center;
-      font-size: 1.12em;
-    }
-    .social-link {
-      color: #29ffee;
-      text-decoration: none;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.44em;
-      letter-spacing: 0.03em;
-      border-bottom: 1px solid #1effe8;
-      transition: color 0.17s, border-bottom 0.17s;
-      filter: drop-shadow(0 0 6px #18ffe844);
-    }
-    .social-link:hover .icon {
-      filter: drop-shadow(0 0 15px #33ffb3) brightness(1.7);
-      transform: scale(1.1);
-    }
-    .icon {
-      width: 1.32em;
-      height: 1.32em;
-      display: inline-block;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 7px #1affbecc) brightness(1.3);
-      transition: filter 0.2s, transform 0.17s;
-    }
-    .github-icon {
-      filter: drop-shadow(0 0 9px #44ffcc99) brightness(1.28);
-    }
-    .section {
-      margin: 2.1em 0 2.1em 0;
-    }
-    .section-title {
-      color: #6fffe6;
-      font-size: 1.08em;
-      font-weight: 700;
-      margin-bottom: .65em;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      text-shadow: 0 0 12px #11ffd055;
-    }
-    ul.links {
-      padding-left: 1.2em;
-      font-size: 1.08em;
-      margin-bottom: .8em;
-      color: #c4ffef;
-    }
-    ul.links li { margin-bottom: .35em; }
-    a {
-      color: #47fafc;
-      text-decoration: none;
-      border-bottom: 1px dotted #2fffc3;
-      transition: color 0.14s;
-    }
-    a:hover {
-      color: #faffea;
-      border-bottom: 1px solid #49ffd8;
-    }
-    .donate {
-      background: #151d25;
-      border-radius: 1.2em;
-      padding: 1.2em 0.9em 1.1em 0.9em;
-      color: #edfff5;
-      margin-top: 2.5em;
-      box-shadow: 0 0 11px #28fba677;
-      text-align: center;
-      font-size: 1.08em;
-      text-shadow: 0 0 6px #12f6f366;
-      letter-spacing: 0.01em;
-    }
-    .cashapp {
-      display: inline-block;
-      margin-top: 0.8em;
-      background: #02d36e;
-      color: #162d22;
-      padding: 0.52em 1.7em;
-      border-radius: 1.2em;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 1.09em;
-      text-decoration: none;
-      box-shadow: 0 2px 8px #1bff8e44;
-      transition: background 0.18s;
-    }
-    .cashapp:hover { background: #00b86b; }
-    .footer {
-      margin-top: 3.2em;
-      text-align: center;
-      color: #80ffd8bb;
-      font-size: 0.99em;
-      opacity: 0.7;
-      letter-spacing: .04em;
-      z-index: 10;
-    }
-    body, a, button {
-      cursor: url('data:image/svg+xml;utf8,<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="12" fill="none" stroke="%2320ffd3" stroke-width="2"/><circle cx="18" cy="18" r="3" fill="%2320ffd3"/><rect x="17.5" y="0" width="1" height="36" fill="%233cffed"/><rect x="0" y="17.5" width="36" height="1" fill="%233cffed"/></svg>') 18 18, crosshair;
-    }
-    a:hover, button:hover { filter: drop-shadow(0 0 4px #24ffe888); }
-    @media (max-width: 700px) {
-      .container { padding: 1.1em 0.38em 2em 0.38em;}
-      h1 { font-size: 1.19em;}
-      .socials { gap: 1em; font-size: 1em; }
-    }
-    /* Cursor trail */
-    .trail-dot {
-      position: fixed;
-      pointer-events: none;
-      border-radius: 50%;
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(circle, #25ffc7cc 0%, #3dffe388 67%, transparent 100%);
-      z-index: 10000;
-      opacity: 0.8;
-      filter: blur(0.5px);
-      mix-blend-mode: lighten;
-      transition: opacity 0.35s;
-    }
+    html, body {height:100%; width:100%; margin:0; padding:0; box-sizing:border-box; background:#0b1017; overflow-x:hidden;}
+    body {min-height:100vh; font-family:'Fira Mono','Consolas',monospace; color:#cfffe4; letter-spacing:.015em; position:relative;}
+    .cyber-bg {position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; overflow:hidden;}
+    .container {max-width:760px; margin:64px auto 44px auto; background:rgba(12,22,36,0.93); border-radius:19px; box-shadow:0 0 40px #11ffc799,0 0 0 2px #27aaff88; padding:2.8em 2.3em 2em 2.3em; position:relative; z-index:3;}
+    h1 {font-size:2.1em; color:#5ffdff; font-weight:700; letter-spacing:0.1em; margin-top:0; margin-bottom:.24em; text-shadow:0 0 22px #00ffe3bb,0 0 4px #12faad;}
+    .slogan {color:#ffefb3; font-size:1.18em; letter-spacing:0.09em; margin-bottom:1.6em; margin-left:2px; text-shadow:0 0 9px #21ffd255; font-weight:600;}
+    .about {margin:1.15em 0 1.6em 0; color:#a0ffe7; font-size:1.16em; line-height:1.6em; text-shadow:0 0 6px #0af1a022;}
+    .socials {margin:1.7em 0 1.7em 0; display:flex; gap:2em; align-items:center; font-size:1.12em;}
+    .social-link {color:#29ffee; text-decoration:none; font-weight:700; display:flex; align-items:center; gap:0.44em; letter-spacing:0.03em; border-bottom:1px solid #1effe8; transition:color 0.17s, border-bottom 0.17s;}
+    .icon {width:1.42em; height:1.42em; display:inline-block; vertical-align:middle; filter:drop-shadow(0 0 8px #1affbecc) brightness(1.22); transition:filter 0.21s, transform 0.15s;}
+    .github-icon {filter:drop-shadow(0 0 9px #44ffcc99) brightness(1.2);}
+    .social-link:hover .icon {filter:drop-shadow(0 0 17px #33ffb3) brightness(2.1); transform:scale(1.13);}
+    .section {margin:2.1em 0 2.1em 0;}
+    .section-title {color:#6fffe6; font-size:1.1em; font-weight:700; margin-bottom:.65em; letter-spacing:.04em; text-transform:uppercase; text-shadow:0 0 12px #11ffd055;}
+    ul.links {padding-left:1.2em; font-size:1.07em; margin-bottom:.8em; color:#c4ffef;}
+    ul.links li {margin-bottom:.34em;}
+    a {color:#47fafc; text-decoration:none; border-bottom:1px dotted #2fffc3; transition:color 0.14s;}
+    a:hover {color:#faffea; border-bottom:1px solid #49ffd8;}
+    .donate {background:#151d25; border-radius:1.2em; padding:1.2em 0.9em 1.1em 0.9em; color:#edfff5; margin-top:2.5em; box-shadow:0 0 11px #28fba677; text-align:center; font-size:1.08em; text-shadow:0 0 6px #12f6f366; letter-spacing:0.01em;}
+    .cashapp {display:inline-block; margin-top:0.8em; background:#02d36e; color:#162d22; padding:0.52em 1.7em; border-radius:1.2em; font-weight:700; letter-spacing:0.03em; font-size:1.09em; text-decoration:none; box-shadow:0 2px 8px #1bff8e44; transition:background 0.18s;}
+    .cashapp:hover {background:#00b86b;}
+    .footer {margin-top:3.2em; text-align:center; color:#80ffd8bb; font-size:0.99em; opacity:0.7; letter-spacing:.04em; z-index:10;}
+    body, a, button {cursor:url('data:image/svg+xml;utf8,<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="12" fill="none" stroke="%2320ffd3" stroke-width="2"/><circle cx="18" cy="18" r="3" fill="%2320ffd3"/><rect x="17.5" y="0" width="1" height="36" fill="%233cffed"/><rect x="0" y="17.5" width="36" height="1" fill="%233cffed"/></svg>') 18 18, crosshair;}
+    a:hover, button:hover {filter:drop-shadow(0 0 4px #24ffe888);}
+    @media (max-width:700px) {.container{padding:1.1em 0.38em 2em 0.38em;} h1{font-size:1.19em;} .socials{gap:1em; font-size:1em;}}
+    .trail-dot {position:fixed; pointer-events:none; border-radius:50%; width:14px; height:14px; background:radial-gradient(circle, #22ffc4cc 0%, #34ffe377 60%, transparent 100%); z-index:10000; opacity:0.81; filter:blur(0.8px); mix-blend-mode:lighten;}
   </style>
 </head>
 <body>
   <canvas class="cyber-bg" id="cyberbg"></canvas>
   <div class="container">
     <h1>GhosTech</h1>
-    <div class="slogan">
-      Protect your data.
-    </div>
+    <div class="slogan">Protect your data.</div>
     <div class="about">
       Solving cybercrime problems. Exploring and sharing the best in digital defense gadgets.<br>
       Advocacy for privacy and online safety.<br>
@@ -203,37 +48,27 @@
       <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank" title="Instagram">
         <span class="icon">
           <!-- Green glowing Instagram SVG -->
-          <svg viewBox="0 0 448 512" width="1em" height="1em" style="filter: drop-shadow(0 0 7px #1affbecc);"><defs><radialGradient id="igglow" cx="50%" cy="50%" r="65%"><stop offset="0%" stop-color="#34ffb3" stop-opacity="1"/><stop offset="100%" stop-color="#0e4b3b" stop-opacity="0.18"/></radialGradient></defs>
-          <rect x="24" y="56" width="400" height="400" rx="100" fill="url(#igglow)" />
-          <circle cx="224" cy="256" r="80" stroke="#34ffb3" stroke-width="35" fill="none"/>
-          <circle cx="344" cy="168" r="18" fill="#34ffb3"/>
-        </svg>
+          <svg viewBox="0 0 448 512" fill="none"><ellipse cx="224" cy="256" rx="120" ry="120" stroke="#4bffb2" stroke-width="28" /><rect x="56" y="56" width="336" height="400" rx="90" stroke="#24ffc6" stroke-width="18" fill="none"/><circle cx="224" cy="256" r="64" fill="#21ffbc"/><circle cx="344" cy="168" r="19" fill="#24ffc6"/></svg>
         </span>
         @GhosTech_IT
       </a>
       <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank" title="YouTube">
         <span class="icon">
           <!-- Neon glowing YouTube SVG -->
-          <svg height="1em" viewBox="0 0 576 512"><defs><radialGradient id="ytglow" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="#24ffd3" /><stop offset="100%" stop-color="#06585c" stop-opacity="0.15"/></radialGradient></defs>
-          <rect x="16.9" y="64" width="543.1" height="384" rx="70" fill="url(#ytglow)" />
-          <polygon points="232,336 232,176 374.7,256" fill="#23ffbe"/>
-        </svg>
+          <svg viewBox="0 0 576 512"><rect x="32" y="96" width="512" height="320" rx="77" fill="#11ffd5" opacity="0.19"/><polygon points="240,368 240,144 416,256" fill="#36ffd8"/><rect x="32" y="96" width="512" height="320" rx="77" stroke="#36ffd8" stroke-width="16" fill="none"/></svg>
         </span>
         @GhosTech_IT
       </a>
       <a class="social-link" href="https://github.com/GhosTech-IT" target="_blank" title="GitHub">
         <span class="icon github-icon">
           <!-- Neon glowing GitHub SVG -->
-          <svg viewBox="0 0 24 24" width="1em" height="1em"><defs><radialGradient id="ghglow" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#43ffd1"/><stop offset="100%" stop-color="#1c2c26" stop-opacity="0.15"/></radialGradient></defs>
-            <circle cx="12" cy="12" r="12" fill="url(#ghglow)"/>
-            <path fill="#2df9b7" d="M12 3C7 3 3 7 3 12c0 4 2.6 7.4 6.1 8.6.5.1.7-.2.7-.5v-1.7c-2.5.5-3-1-3-1-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2 1 2.5.7.1-.6.3-1 .5-1.2-2-.2-4-1-4-4.3 0-.9.3-1.5.8-2.1-.1-.2-.4-1.1.1-2.2 0 0 .7-.2 2.2.8A7.6 7.6 0 0 1 12 8c.7 0 1.4.1 2 .2 1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3.3-2 4-4 4.3.3.3.5.7.5 1.4v2c0 .3.2.6.7.5A9 9 0 0 0 21 12c0-5-4-9-9-9z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#21ffd477" /><path fill="#21ffd2" d="M12 3C7 3 3 7 3 12c0 4 2.6 7.4 6.1 8.6.5.1.7-.2.7-.5v-1.7c-2.5.5-3-1-3-1-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2 1 2.5.7.1-.6.3-1 .5-1.2-2-.2-4-1-4-4.3 0-.9.3-1.5.8-2.1-.1-.2-.4-1.1.1-2.2 0 0 .7-.2 2.2.8A7.6 7.6 0 0 1 12 8c.7 0 1.4.1 2 .2 1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3.3-2 4-4 4.3.3.3.5.7.5 1.4v2c0 .3.2.6.7.5A9 9 0 0 0 21 12c0-5-4-9-9-9z"/></svg>
         </span>
         GhosTech-IT
       </a>
     </div>
     <div class="section">
-      <div class="section-title">Gadgets & Security Resources</div>
+      <div class="section-title">Web-Based Cybersecurity Resources & Tools</div>
       <ul class="links">
         <li><a href="https://flipperzero.one/" target="_blank">Flipper Zero</a> — Pocket multi-tool for hacking & pentesting</li>
         <li><a href="https://tails.net/" target="_blank">Tails OS</a> — Bootable USB OS for privacy and anonymity</li>
@@ -244,6 +79,23 @@
         <li><a href="https://lockdownprivacy.com/" target="_blank">Lockdown Privacy</a> — Tracker blocker</li>
         <li><a href="https://roadmap.sh/" target="_blank">roadmap.sh</a> — Security learning roadmaps</li>
         <li><a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a> — Open-source wordlists</li>
+        <li><a href="https://urlscan.io/" target="_blank">urlscan.io</a> — Scan websites for threats</li>
+        <li><a href="https://mxtoolbox.com/" target="_blank">MXToolbox</a> — Domain & email audit tools</li>
+        <li><a href="https://intodns.com/" target="_blank">IntoDNS</a> — DNS & mail config audit</li>
+        <li><a href="https://www.ssllabs.com/ssltest/" target="_blank">SSL Labs</a> — SSL/TLS audit & grading</li>
+        <li><a href="https://exploit-db.com/" target="_blank">Exploit Database</a> — Public exploits archive</li>
+        <li><a href="https://hunter.io/" target="_blank">Hunter.io</a> — Email address discovery & validation</li>
+        <li><a href="https://crt.sh/" target="_blank">crt.sh</a> — Certificate transparency search</li>
+        <li><a href="https://wigle.net/" target="_blank">Wigle</a> — WiFi & cell tower OSINT mapping</li>
+        <li><a href="https://dnstwister.report/" target="_blank">DNSTwister</a> — Domain typo & phishing monitor</li>
+        <li><a href="https://threatfox.abuse.ch/" target="_blank">ThreatFox</a> — Real-time IOC threat feed</li>
+        <li><a href="https://osintframework.com/" target="_blank">OSINT Framework</a> — Open-source intelligence resources</li>
+        <li><a href="https://leakpeek.com/" target="_blank">LeakPeek</a> — Check email leaks & breaches</li>
+        <li><a href="https://www.dehashed.com/" target="_blank">DeHashed</a> — Email, username, IP, password breach search</li>
+        <li><a href="https://hashes.com/en/decrypt/hash" target="_blank">hashes.com</a> — Hash cracking & lookup</li>
+        <li><a href="https://www.hardenize.com/" target="_blank">Hardenize</a> — Web infrastructure security report</li>
+        <li><a href="https://threatmap.checkpoint.com/" target="_blank">Checkpoint ThreatMap</a> — Live cyber attack visualizations</li>
+        <li><a href="https://grayhatwarfare.com/" target="_blank">GrayhatWarfare</a> — Open S3 bucket search</li>
       </ul>
     </div>
     <div class="section">
@@ -263,36 +115,81 @@
   <div class="footer">
     GhosTech — cybercrime solutions & gadget exploration.
   </div>
+  <!-- Live cyber lines background -->
   <script>
-    // Animated cyber lines for live feel
     const canvas = document.getElementById('cyberbg');
     const ctx = canvas.getContext('2d');
     let w = window.innerWidth, h = window.innerHeight;
-    canvas.width = w; canvas.height = h;
-
-    function resizeBg(){
+    function resizeBg() {
       w = window.innerWidth; h = window.innerHeight;
       canvas.width = w; canvas.height = h;
     }
+    resizeBg();
     window.addEventListener('resize', resizeBg);
-
-    // Each line: {x, y, dx, dy, hue, len}
     let lines = [];
-    for(let i=0;i<13;i++){
+    for(let i=0;i<17;i++){
       let angle = Math.random()*Math.PI*2;
-      lines.push({
-        x: Math.random()*w,
-        y: Math.random()*h,
-        dx: Math.cos(angle)*1.3,
-        dy: Math.sin(angle)*1.3,
-        hue: 165+Math.random()*120,
-        len: 50+Math.random()*150,
-        t: Math.random()*Math.PI*2
-      });
+      lines.push({x:Math.random()*w, y:Math.random()*h, dx:Math.cos(angle)*1.2, dy:Math.sin(angle)*1.2, hue:145+Math.random()*100, len:70+Math.random()*200, t:Math.random()*Math.PI*2});
     }
     function drawLines(){
       ctx.clearRect(0,0,w,h);
       for(const ln of lines){
-        let glow = ctx.createLinearGradient(ln.x,ln.y,ln.x+ln.dx*ln.len,ln.y+ln.dy*ln.len);
-        glow.addColorStop(0,`hsla(${ln.hue},100%,60%,0.19)`);
-        glow.addColorStop(.7,`hsla(${ln.hue
+        let glow=ctx.createLinearGradient(ln.x,ln.y,ln.x+ln.dx*ln.len,ln.y+ln.dy*ln.len);
+        glow.addColorStop(0,`hsla(${ln.hue},100%,67%,0.17)`);
+        glow.addColorStop(.7,`hsla(${ln.hue+25},100%,80%,0.11)`);
+        glow.addColorStop(1,`hsla(${ln.hue+70},98%,93%,0.05)`);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(ln.x,ln.y);
+        ctx.lineTo(ln.x+ln.dx*ln.len,ln.y+ln.dy*ln.len);
+        ctx.strokeStyle = glow;
+        ctx.shadowColor = `hsla(${ln.hue+22},99%,66%,.77)`;
+        ctx.shadowBlur = 16;
+        ctx.lineWidth = 1.4 + Math.abs(Math.sin(ln.t))*1.5;
+        ctx.globalAlpha = .8 + .18*Math.sin(ln.t);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        ctx.restore();
+        ln.x += ln.dx*Math.sin(ln.t)*0.7;
+        ln.y += ln.dy*Math.cos(ln.t)*0.7;
+        ln.t += 0.017+Math.random()*0.009;
+        if(ln.x<0||ln.x>w||ln.y<0||ln.y>h){
+          ln.x = Math.random()*w;
+          ln.y = Math.random()*h;
+          ln.hue = 120+Math.random()*120;
+          ln.len = 80+Math.random()*160;
+        }
+      }
+      requestAnimationFrame(drawLines);
+    }
+    drawLines();
+    // Cursor trail: works on mouse and touch
+    let trail = [];
+    function addTrail(x, y) {
+      trail.push({x, y, life: 1});
+      if (trail.length > 12) trail.shift();
+    }
+    document.addEventListener('mousemove', e => addTrail(e.clientX, e.clientY));
+    document.addEventListener('touchmove', e => {
+      let t = e.touches[0];
+      if(t) addTrail(t.clientX, t.clientY);
+    }, {passive:true});
+    function renderTrail() {
+      document.querySelectorAll('.trail-dot').forEach(e=>e.remove());
+      for(let i=0;i<trail.length;i++){
+        let dot=document.createElement('div');
+        dot.className='trail-dot';
+        dot.style.left = (trail[i].x-7) + 'px';
+        dot.style.top = (trail[i].y-7) + 'px';
+        dot.style.opacity = 0.1 + trail[i].life*0.6 + (i/trail.length)*0.3;
+        dot.style.width = dot.style.height = (14 + i*1.5) + 'px';
+        document.body.appendChild(dot);
+      }
+      for(let t of trail) t.life *= 0.87;
+      trail = trail.filter(t=>t.life>0.04);
+      requestAnimationFrame(renderTrail);
+    }
+    renderTrail();
+  </script>
+</body>
+</html>

@@ -18,7 +18,6 @@
       letter-spacing: .015em;
       position: relative;
     }
-    /* CYBER ANIMATED BACKGROUND */
     .cyber-bg {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -28,7 +27,6 @@
       filter: blur(0.2px) brightness(1.09) contrast(1.03);
       background: #0b1017;
     }
-    /* BLURRING/NEON for glassy cyber feel */
     .container {
       max-width: 720px;
       margin: 64px auto 44px auto;
@@ -78,7 +76,7 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 0.45em;
+      gap: 0.44em;
       letter-spacing: 0.03em;
       border-bottom: 1px solid #1effe8;
       transition: color 0.17s, border-bottom 0.17s;
@@ -89,7 +87,9 @@
       border-bottom: 1px solid #35f0fe;
     }
     .icon {
-      font-size: 1.18em;
+      width: 1.25em;
+      height: 1.25em;
+      display: inline-block;
       vertical-align: middle;
       filter: drop-shadow(0 0 7px #24fff577);
     }
@@ -132,6 +132,7 @@
       text-align: center;
       font-size: 1.08em;
       text-shadow: 0 0 6px #12f6f366;
+      letter-spacing: 0.01em;
     }
     .cashapp {
       display: inline-block;
@@ -157,16 +158,10 @@
       letter-spacing: .04em;
       z-index: 10;
     }
-
-    /* Custom hacker cursor */
     body, a, button {
       cursor: url('data:image/svg+xml;utf8,<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="12" fill="none" stroke="%2320ffd3" stroke-width="2"/><circle cx="18" cy="18" r="3" fill="%2320ffd3"/><rect x="17.5" y="0" width="1" height="36" fill="%233cffed"/><rect x="0" y="17.5" width="36" height="1" fill="%233cffed"/></svg>') 18 18, crosshair;
     }
-    /* On links/buttons, even more glow */
-    a:hover, button:hover {
-      filter: drop-shadow(0 0 4px #24ffe888);
-    }
-
+    a:hover, button:hover { filter: drop-shadow(0 0 4px #24ffe888); }
     @media (max-width: 700px) {
       .container { padding: 1.1em 0.38em 2em 0.38em;}
       h1 { font-size: 1.19em;}
@@ -175,7 +170,6 @@
   </style>
 </head>
 <body>
-  <!-- CYBER ANIMATED BACKGROUND SVG CANVAS -->
   <canvas class="cyber-bg" id="cyberbg"></canvas>
   <div class="container">
     <h1>GhosTech</h1>
@@ -183,19 +177,19 @@
       Protect your data.
     </div>
     <div class="about">
-      Solving cybercrime problems. Exploring and sharing the best in digital defense gadgets.<br>
+      Student in IT and Cybersecurity. Exploring and sharing the best in digital defensive gadgets.<br>
       Advocacy for privacy and online safety.<br>
-      <span style="color:#82ffd2;">Discover, upgrade, and protect your world. DMs open.</span>
+      <span style="color:#82ffd2;">Discover, upgrade, and protect your cyber world.</span>
     </div>
     <div class="socials">
-      <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank">
-        <span class="icon" title="Instagram">
-          <svg height="1em" viewBox="0 0 448 512"><path fill="#2fffb3" d="M224 202.66A53.34 53.34 0 1 0 277.34 256 53.38 53.38 0 0 0 224 202.66Zm124.71-41a54 54 0 0 0-30.23-30.24C295.15 117.7 281.55 112 256 112s-39.15 5.7-62.47 19.42a54 54 0 0 0-30.23 30.24C117.7 152.85 112 166.45 112 192c0 25.55 5.7 39.15 19.42 62.47a54 54 0 0 0 30.24 30.23C152.85 334.3 166.45 340 192 340c25.55 0 39.15-5.7 62.47-19.42a54 54 0 0 0 30.23-30.23C334.3 295.15 340 281.55 340 256s-5.7-39.15-19.42-62.47Z"></path></svg>
+      <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank" title="Instagram">
+        <span class="icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width:1.22em;vertical-align:middle;border-radius:0.25em;box-shadow:0 0 2px #11ffe8;"/>
         </span>
         @GhosTech_IT
       </a>
-      <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank">
-        <span class="icon" title="YouTube">
+      <a class="social-link" href="https://youtube.com/@GhosTech_IT" target="_blank" title="YouTube">
+        <span class="icon">
           <svg height="1em" viewBox="0 0 576 512"><path fill="#2fffb3" d="M549.655 124.083c-6.281-23.725-24.916-42.36-48.641-48.641C458.029 64 288 64 288 64s-170.029 0-213.014 11.442c-23.724 6.281-42.36 24.916-48.641 48.641C16.902 167.07 16.902 256 16.902 256s0 88.93 10.443 131.917c6.281 23.725 24.917 42.36 48.641 48.641C117.971 448 288 448 288 448s170.029 0 213.014-11.442c23.725-6.281 42.36-24.916 48.641-48.641C559.098 344.93 559.098 256 559.098 256s0-88.93-9.443-131.917zM232 336V176l142.745 80L232 336z"/></svg>
         </span>
         @GhosTech_IT
@@ -205,31 +199,32 @@
       <div class="section-title">Gadgets & Security Resources</div>
       <ul class="links">
         <li><a href="https://flipperzero.one/" target="_blank">Flipper Zero</a> — Pocket multi-tool for hacking & pentesting</li>
+        <li><a href="https://tails.net/" target="_blank">Tails OS</a> — Bootable USB OS for privacy and anonymity</li>
         <li><a href="https://haveibeenpwned.com/" target="_blank">HaveIBeenPwned</a> — Check for breached accounts</li>
         <li><a href="https://shodan.io/" target="_blank">Shodan</a> — Device search & exposure mapping</li>
         <li><a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> — Multi-engine file scanning</li>
         <li><a href="https://www.privacyguides.org/" target="_blank">Privacy Guides</a> — Tools & habits for privacy</li>
         <li><a href="https://lockdownprivacy.com/" target="_blank">Lockdown Privacy</a> — Tracker blocker</li>
+        <li><a href="https://roadmap.sh/" target="_blank">roadmap.sh</a> — Security learning roadmaps</li>
         <li><a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a> — Open-source wordlists</li>
       </ul>
     </div>
     <div class="section">
       <div class="section-title">Reading & Discovery</div>
       <ul class="links">
-        <li><a href="https://www.hackerone.com/blog/hacker101" target="_blank">Hacker101 — Free web security training</a></li>
+        <li><a href="https://tryhackme.com" target="_blank">TryHackMe — Hacker training</a></li>
         <li><a href="https://www.blackhillsinfosec.com/blog/" target="_blank">Black Hills InfoSec Blog</a></li>
         <li><a href="https://www.reddit.com/r/netsec/" target="_blank">Reddit: /r/netsec</a></li>
         <li><a href="https://www.rfc-editor.org/rfc/rfc2196" target="_blank">RFC 2196: Site Security Handbook</a></li>
       </ul>
     </div>
     <div class="donate">
-      <b>Like my work? Support future content & research:</b><br>
+      <b>Support future projects by donating below.</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
   </div>
   <div class="footer">
-    &copy; 2023-2024 GhosTech.<br>
-    Cybercrime solutions & gadget exploration.
+    GhosTech — cybercrime solutions & gadget exploration.
   </div>
   <script>
     // Animated cyber lines for live feel

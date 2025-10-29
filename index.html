@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GhosTech — Cyber Mirror</title>
+  <title>CYBER MIRROR — GhosTech</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap">
   <style>
     html, body {
@@ -16,6 +16,8 @@
       overflow-x: hidden;
       overscroll-behavior: auto;
       touch-action: auto;
+      /* Cyberpunk glitch cursor default */
+      cursor: url('data:image/svg+xml;utf8,<svg width="44" height="44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" fill="none"/><rect x="20" y="0" width="4" height="44" fill="%230affc5"/><rect x="0" y="20" width="44" height="4" fill="%230affc5"/><rect x="20" y="0" width="4" height="44" fill="%23ff40ff" opacity="0.5"/><rect x="0" y="22" width="44" height="2" fill="%233effde" opacity="0.6"/></svg>') 22 22, crosshair;
     }
     body {
       min-height: 100vh;
@@ -41,11 +43,84 @@
       overflow: hidden;
       touch-action: none;
     }
-    .container {max-width:760px; margin:64px auto 44px auto; background:rgba(12,22,36,0.93); border-radius:19px; box-shadow:0 0 40px #11ffc799,0 0 0 2px #27aaff88; padding:2.8em 2.3em 2em 2.3em; position:relative; z-index:3;}
-    h1 {font-size:2.1em; color:#5ffdff; font-weight:700; letter-spacing:0.1em; margin-top:0; margin-bottom:.24em; text-shadow:0 0 22px #00ffe3bb,0 0 4px #12faad;}
-    .slogan {color:#ffefb3; font-size:1.18em; letter-spacing:0.09em; margin-bottom:1.6em; margin-left:2px; text-shadow:0 0 9px #21ffd255; font-weight:600;}
-    .about {margin:1.15em 0 1.6em 0; color:#a0ffe7; font-size:1.16em; line-height:1.6em; text-shadow:0 0 6px #0af1a022;}
-    .socials {margin:1.7em 0 1.7em 0; display:flex; gap:2em; align-items:center; font-size:1.12em;}
+    .bg-glitch {
+      pointer-events:none;
+      z-index: 2;
+      position:fixed; left:0; top:0; width:100vw; height:100vh;
+      background: transparent;
+      mix-blend-mode: lighten;
+      opacity: 0;
+      transition: opacity 0.13s;
+    }
+    .cyber-trail-dot {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 3px;
+      width: 19px;
+      height: 8px;
+      opacity: 0.88;
+      transform: translate(-50%, -50%) skewX(-25deg);
+      background: linear-gradient(90deg,#26ffcb 0%, #2e3efb 60%, #f242ff 100%);
+      filter: blur(0.8px) brightness(1.3) drop-shadow(0 0 12px #0ff) contrast(1.18);
+      box-shadow: 0 0 12px #31ffd8bb, 0 0 3px #f242ff77, 0 0 7px #26ffcb66;
+      z-index: 10000;
+      mix-blend-mode: lighten;
+      animation: trailglitch .27s cubic-bezier(.61,0,.9,1);
+    }
+    @keyframes trailglitch {
+      0% { filter: brightness(1.6) blur(1.2px); opacity: 1; }
+      45% { filter: hue-rotate(30deg) blur(2px) brightness(2.2); }
+      65% { filter: hue-rotate(-18deg) blur(0.7px); }
+      100% { opacity: 0.1; }
+    }
+    .container {
+      max-width:760px; 
+      margin:64px auto 44px auto; 
+      background:rgba(12,22,36,0.93); 
+      border-radius:19px; 
+      box-shadow:0 0 40px #11ffc799,0 0 0 2px #27aaff88; 
+      padding:2.8em 2.3em 2em 2.3em; 
+      position:relative; 
+      z-index:3;
+      text-align: center;
+    }
+    h1 {
+      font-size:2.1em; 
+      color:#5ffdff; 
+      font-weight:700; 
+      letter-spacing:0.1em; 
+      margin-top:0; 
+      margin-bottom:.24em; 
+      text-shadow:0 0 22px #00ffe3bb,0 0 4px #12faad;
+      text-align: center;
+    }
+    .slogan {
+      color:#42ff7b; 
+      font-size:1.18em; 
+      letter-spacing:0.09em; 
+      margin-bottom:1.1em; 
+      margin-left:2px; 
+      text-shadow:0 0 9px #18e05377; 
+      font-weight:600; 
+      text-align: center;
+    }
+    .about {
+      margin:1.15em auto 1.6em auto; 
+      color:#a0ffe7; 
+      font-size:1.16em; 
+      line-height:1.5em; 
+      text-shadow:0 0 6px #0af1a022; 
+      max-width:500px;
+      text-align:center;
+    }
+    .socials {
+      margin:1.7em 0 1.7em 0; 
+      display:flex; 
+      gap:2em; 
+      align-items:center; 
+      font-size:1.12em; 
+      justify-content: center;
+    }
     .social-link {color:#29ffee; text-decoration:none; font-weight:700; display:flex; align-items:center; gap:0.44em; letter-spacing:0.03em; border-bottom:1px solid #1effe8; transition:color 0.17s, border-bottom 0.17s;}
     .icon {width:1.42em; height:1.42em; display:inline-block; vertical-align:middle; filter:drop-shadow(0 0 8px #1affbecc) brightness(1.22); transition:filter 0.21s, transform 0.15s;}
     .github-icon {filter:drop-shadow(0 0 9px #44ffcc99) brightness(1.2);}
@@ -60,48 +135,25 @@
     .cashapp {display:inline-block; margin-top:0.8em; background:#02d36e; color:#162d22; padding:0.52em 1.7em; border-radius:1.2em; font-weight:700; letter-spacing:0.03em; font-size:1.09em; text-decoration:none; box-shadow:0 2px 8px #1bff8e44; transition:background 0.18s;}
     .cashapp:hover {background:#00b86b;}
     .footer {margin-top:3.2em; text-align:center; color:#80ffd8bb; font-size:0.99em; opacity:0.7; letter-spacing:.04em; z-index:10;}
-    body, a, button {cursor:url('data:image/svg+xml;utf8,<svg width="36" height="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="12" fill="none" stroke="%2320ffd3" stroke-width="2"/><circle cx="18" cy="18" r="3" fill="%2320ffd3"/><rect x="17.5" y="0" width="1" height="36" fill="%233cffed"/><rect x="0" y="17.5" width="36" height="1" fill="%233cffed"/></svg>') 18 18, crosshair;}
-    a:hover, button:hover {filter:drop-shadow(0 0 4px #24ffe888);}
     @media (max-width:700px) {.container{padding:1.1em 0.38em 2em 0.38em;} h1{font-size:1.19em;} .socials{gap:1em; font-size:1em;}}
-    .trail-dot {position:fixed; pointer-events:none; border-radius:50%; width:14px; height:14px; background:radial-gradient(circle, #22ffc4cc 0%, #34ffe377 60%, transparent 100%); z-index:10000; opacity:0.81; filter:blur(0.8px); mix-blend-mode:lighten;}
-    .featured-build {
-      background: #17242e;
-      border: 2px solid #30ffb6;
-      box-shadow: 0 0 22px #23ffb688;
-      border-radius: 13px;
-      padding: 1.3em 1em 1.2em 1em;
-      margin-bottom: 1.2em;
-      color: #d8ffee;
-    }
-    .featured-build-title {
-      font-size: 1.18em;
-      color: #31ffd8;
-      font-weight: 700;
-      text-shadow: 0 0 12px #27ffc5;
-      margin-bottom: .34em;
-    }
-    .featured-build-link {
-      color: #25fbc5;
-      font-weight: 700;
-      text-shadow: 0 0 4px #19ffc2;
-      margin-top: 0.5em;
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
+<audio id="cyber-audio" autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/02/16/audio_12b537fa10.mp3" type="audio/mpeg">
+</audio>
   <canvas class="cyber-bg" id="cyberbg"></canvas>
   <canvas class="matrix-rain" id="matrixrain"></canvas>
   <div class="glitch-screen" id="glitchScreen"></div>
   <canvas class="glitch-rgb" id="glitchRGB"></canvas>
   <canvas class="glitch-lines" id="glitchLines"></canvas>
+  <div class="bg-glitch" id="bgGlitch"></div>
   <div class="container" id="mainContent" style="opacity:0;transition:opacity 0.9s cubic-bezier(.68,-0.55,.27,1.55);">
-    <h1>GhosTech</h1>
-    <div class="slogan">Protect your data.</div>
+    <h1>CYBER MIRROR</h1>
+    <div class="slogan">Welcome to GhosTech's landing page</div>
     <div class="about">
-      Ethical hacking. Cybersecurity gadget DIY.<br>
-      Advocacy for privacy and online safety.<br>
-      <span style="color:#82ffd2;">Learn, develop, and protect your cyber world.</span>
+      Computer &amp; phone repair specialist.<br>
+      Cybersecurity enthusiast &amp; online privacy advocate.
     </div>
     <div class="socials">
       <a class="social-link" href="https://instagram.com/GhosTech_IT" target="_blank" title="Instagram">
@@ -123,52 +175,6 @@
         GhosTech-IT
       </a>
     </div>
-    <!-- START PROJECTS SECTION -->
-    <div class="section">
-      <div class="section-title">GhosTech's Projects</div>
-      <div class="featured-build">
-        <div class="featured-build-title">⭐ Featured Build: Pwnagotchi Fallout Vault Boy Theme</div>
-        <div>Turn a Raspberry Pi into a WiFi handshake collector—now with a post-apocalyptic Fallout Boy twist.</div>
-        <a class="featured-build-link" href="https://github.com/GhosTech-IT/pwnagotchi-fallout-vault-boy-theme" target="_blank">View on GitHub</a>
-      </div>
-      <ul class="links" style="margin-bottom:0;">
-        <li><a href="https://github.com/GhosTech-IT/Flipper-Zero" target="_blank">Flipper Zero</a> — a collection of Flipper Zero creations</li>
-        <li><a href="https://tails.net/" target="_blank">Key fob synchronizing</a> — for victims of Flipper Zero CFW key fob attacks</li>
-      </ul>
-    </div>
-    <!-- END PROJECTS SECTION -->
-    <div class="section">
-      <div class="section-title">Web-Based Cybersecurity Resources & Tools</div>
-      <ul class="links">
-        <li><a href="https://flipperzero.one/" target="_blank">Flipper Zero</a> — Pocket multi-tool for hacking & pentesting</li>
-        <li><a href="https://tails.net/" target="_blank">Tails OS</a> — Bootable USB OS for privacy and anonymity</li>
-        <li><a href="https://haveibeenpwned.com/" target="_blank">HaveIBeenPwned</a> — Check for breached accounts</li>
-        <li><a href="https://shodan.io/" target="_blank">Shodan</a> — Device search & exposure mapping</li>
-        <li><a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> — Multi-engine file scanning</li>
-        <li><a href="https://www.privacyguides.org/" target="_blank">Privacy Guides</a> — Tools & habits for privacy</li>
-        <li><a href="https://lockdownprivacy.com/" target="_blank">Lockdown Privacy</a> — Tracker blocker</li>
-        <li><a href="https://roadmap.sh/" target="_blank">roadmap.sh</a> — Security learning roadmaps</li>
-        <li><a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a> — Open-source wordlists</li>
-        <li><a href="https://urlscan.io/" target="_blank">urlscan.io</a> — Scan websites for threats</li>
-        <li><a href="https://mxtoolbox.com/" target="_blank">MXToolbox</a> — Domain & email audit tools</li>
-        <li><a href="https://intodns.com/" target="_blank">IntoDNS</a> — DNS & mail config audit</li>
-        <li><a href="https://www.ssllabs.com/ssltest/" target="_blank">SSL Labs</a> — SSL/TLS audit & grading</li>
-        <li><a href="https://exploit-db.com/" target="_blank">Exploit Database</a> — Public exploits archive</li>
-        <li><a href="https://hunter.io/" target="_blank">Hunter.io</a> — Email address discovery & validation</li>
-        <li><a href="https://crt.sh/" target="_blank">crt.sh</a> — Certificate transparency search</li>
-        <li><a href="https://wigle.net/" target="_blank">Wigle</a> — WiFi & cell tower OSINT mapping</li>
-        <li><a href="https://dnstwister.report/" target="_blank">DNSTwister</a> — Domain typo & phishing monitor</li>
-        <li><a href="https://threatfox.abuse.ch/" target="_blank">ThreatFox</a> — Real-time IOC threat feed</li>
-        <li><a href="https://osintframework.com/" target="_blank">OSINT Framework</a> — Open-source intelligence resources</li>
-        <li><a href="https://leakpeek.com/" target="_blank">LeakPeek</a> — Check email leaks & breaches</li>
-        <li><a href="https://www.dehashed.com/" target="_blank">DeHashed</a> — Email, username, IP, password breach search</li>
-        <li><a href="https://hashes.com/en/decrypt/hash" target="_blank">hashes.com</a> — Hash cracking & lookup</li>
-        <li><a href="https://www.hardenize.com/" target="_blank">Hardenize</a> — Web infrastructure security report</li>
-        <li><a href="https://threatmap.checkpoint.com/" target="_blank">Checkpoint ThreatMap</a> — Live cyber attack visualizations</li>
-        <li><a href="https://grayhatwarfare.com/" target="_blank">GrayhatWarfare</a> — Open S3 bucket search</li>
-      </ul>
-    </div>
-    <div class="donate">
       <b>Support my journey :)</b><br>
       <a class="cashapp" href="https://cash.app/$GhosTechRepair" target="_blank">$GhosTechRepair</a>
     </div>
@@ -221,11 +227,11 @@
     }
     drawLines();
 
-    // CURSOR TRAIL (MOUSE & TOUCH)
+    // CURSOR TRAIL: neon, glitchy, multi-color pixel ghosts
     let trail = [];
     function addTrail(x, y) {
-      trail.push({x, y, life: 1});
-      if (trail.length > 14) trail.shift();
+      trail.push({x, y, life: 1, hue: Math.floor(120+Math.random()*180)});
+      if (trail.length > 22) trail.shift();
     }
     document.addEventListener('mousemove', e => addTrail(e.clientX, e.clientY));
     document.addEventListener('touchmove', e => {
@@ -233,23 +239,23 @@
       if(t) addTrail(t.clientX, t.clientY);
     }, {passive:true});
     function renderTrail() {
-      document.querySelectorAll('.trail-dot').forEach(e=>e.remove());
+      document.querySelectorAll('.cyber-trail-dot').forEach(e=>e.remove());
       for(let i=0;i<trail.length;i++){
         let dot=document.createElement('div');
-        dot.className='trail-dot';
-        dot.style.left = (trail[i].x-7) + 'px';
-        dot.style.top = (trail[i].y-7) + 'px';
-        dot.style.opacity = 0.11 + trail[i].life*0.6 + (i/trail.length)*0.26;
-        dot.style.width = dot.style.height = (14 + i*1.6) + 'px';
+        dot.className='cyber-trail-dot';
+        dot.style.left = (trail[i].x) + 'px';
+        dot.style.top = (trail[i].y) + 'px';
+        dot.style.opacity = 0.16 + trail[i].life*0.6 + (i/trail.length)*0.28;
+        dot.style.background = `linear-gradient(90deg,hsla(${trail[i].hue},100%,63%,0.95),#23f5fb 65%,#e348ff 100%)`;
         document.body.appendChild(dot);
       }
-      for(let t of trail) t.life *= 0.87;
-      trail = trail.filter(t=>t.life>0.04);
+      for(let t of trail) t.life *= 0.85;
+      trail = trail.filter(t=>t.life>0.06);
       requestAnimationFrame(renderTrail);
     }
     renderTrail();
 
-    // BINARY MATRIX RAIN WITH "ghostech" ENCODED, 25% SLOWER
+    // BINARY MATRIX RAIN
     const mcanvas = document.getElementById('matrixrain');
     const mctx = mcanvas.getContext('2d');
     function resizeMatrix(){
@@ -282,7 +288,6 @@
         let bit = binaryMsg[letterNum][bitNum];
         mctx.fillStyle = "#26ffd2";
         mctx.fillText(bit, i*fontSize, drops[i]*fontSize);
-        // 25% slower
         if (Math.random() > 0.76) drops[i]++;
         if(drops[i]*fontSize > mcanvas.height && Math.random() > 0.92) {
           drops[i]=0;
@@ -295,35 +300,52 @@
     }
     drawMatrix();
 
-    // GLITCH ON LOAD
+    // CYBERPUNK RGB GLITCH (background only, frequent/random)
+    const bgGlitch = document.getElementById('bgGlitch');
+    function cyberpunkGlitch() {
+      let randX = Math.floor(Math.random()*80)-40, randY = Math.floor(Math.random()*80)-40;
+      bgGlitch.style.opacity = '1';
+      bgGlitch.style.background = `
+        linear-gradient(90deg, rgba(56,255,235,0.16), transparent 70%),
+        radial-gradient(circle at ${50+randX}% ${50+randY}%, rgba(28,255,211,0.18) 0%, transparent 90%),
+        repeating-linear-gradient(0deg,rgba(32,255,230,0.13),rgba(0,0,0,0) 2px,rgba(0,0,0,0) 12px),
+        repeating-linear-gradient(270deg,rgba(240,35,255,0.04),rgba(0,0,0,0) 3px,rgba(0,0,0,0) 9px)
+      `;
+      bgGlitch.animate([
+        { filter: "none" },
+        { filter: `contrast(1.24) brightness(1.18) blur(1.1px) drop-shadow(-9px 0 17px #00ffe3) drop-shadow(5px 0 18px #ff3efd) drop-shadow(0 0 11px #0ff)` }
+      ], { duration: 170, easing: "ease-in" });
+      setTimeout(() => { bgGlitch.style.opacity = '0'; }, 170 + Math.random()*200);
+      setTimeout(cyberpunkGlitch, 2400 + Math.random()*3500);
+    }
+    setTimeout(cyberpunkGlitch, 1400);
+
+    // GLITCH ON LOAD (keeps the initial flicker)
     function glitchOnLoad() {
       const glitchScreen = document.getElementById('glitchScreen');
       const glitchRGB = document.getElementById('glitchRGB');
       const glitchLines = document.getElementById('glitchLines');
-      let steps = 0, maxSteps = 17;
+      let steps = 0, maxSteps = 15;
       function step(){
-        // RGB split effect
         glitchRGB.width = window.innerWidth; glitchRGB.height = window.innerHeight;
         let ctxRGB = glitchRGB.getContext('2d');
         ctxRGB.clearRect(0,0,glitchRGB.width,glitchRGB.height);
         for(let i=0;i<5;i++){
           let y = Math.random()*window.innerHeight;
-          ctxRGB.fillStyle = `rgba(35,255,220,0.17)`;
+          ctxRGB.fillStyle = `rgba(35,255,220,0.15)`;
           ctxRGB.fillRect(0,y,window.innerWidth,4+Math.random()*6);
           ctxRGB.globalCompositeOperation = "lighter";
         }
-        // Random scanlines
         glitchLines.width = window.innerWidth; glitchLines.height = window.innerHeight;
         let ctxLines = glitchLines.getContext('2d');
         ctxLines.clearRect(0,0,glitchLines.width,glitchLines.height);
-        for(let i=0;i<22;i++){
+        for(let i=0;i<16;i++){
           let y = Math.random()*window.innerHeight;
           ctxLines.strokeStyle = `rgba(30,255,222,0.04)`;
           ctxLines.beginPath();
           ctxLines.moveTo(0,y); ctxLines.lineTo(window.innerWidth, y);
           ctxLines.stroke();
         }
-        // RGB noise
         if(steps===0){
           glitchScreen.style.background='linear-gradient(90deg,#19ffd9 0 6%,#13aeaa 100%)';
         } else {
@@ -331,7 +353,7 @@
         }
         steps++;
         if(steps < maxSteps){
-          setTimeout(step, 27+Math.random()*44);
+          setTimeout(step, 19+Math.random()*37);
         } else {
           glitchScreen.style.opacity=0;
           glitchRGB.style.opacity=0;
@@ -339,13 +361,12 @@
           document.getElementById('mainContent').style.opacity=1;
           setTimeout(()=>{
             glitchScreen.remove();glitchRGB.remove();glitchLines.remove();
-          },900);
+          },850);
         }
       }
       step();
     }
     window.onload = glitchOnLoad;
-    // Touch scroll for iOS fix
     document.getElementById('mainContent').addEventListener('touchmove', function(e){}, {passive:false});
   </script>
 </body>
